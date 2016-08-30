@@ -15,24 +15,20 @@ include_once('db_config.php');
         array_push($posts_array, $posts_row);
     }
 
+    $comments_array = array();
+
+    // Save data into database
+    $query = "SELECT `comment_oc`.`comment`, `comment_oc`.`comment_date`, `user_oc`.`username` AS user, `report_oc`.`id` AS report_id FROM comment_oc, report_oc, user_oc WHERE user_oc.id = comment_oc.user_id AND report_oc.id = comment_oc.report_id;";
+    $result = mysql_query($query);
+    
+    while ($comments_row = mysql_fetch_assoc($result))
+    {   
+    	array_push($comments_array, $comments_row);
+    }
+    
+    $whole_data = array("result" => 1, "reports" => json_encode($posts_array), "comments" => json_encode($comments_array));
+
 mysql_close($conn);
 /* JSON Response */
-echo json_encode($posts_array);
-
-
-/*$posts_array = array();
-
-while ($posts_row = mysqli_fetch_array($run_posts))
-{
-  $row_array['id'] = $posts_row['id'];
-  $row_array['game'] = $posts_row['game'];
-  $row_array['date'] = $posts_row['date'];
-  array_push($posts_array, $row_array);
-}
-
-$string = json_encode($posts_array, JSON_UNESCAPED_UNICODE);
-echo $string;
-
-*/
-
-?>
+echo json_encode($whole_data);
+SELECT `comment_oc`.`comment`, `comment_oc`.`comment_date`, `user_oc`.`username` AS user, `report_oc`.`id` AS report_id FROM comment_oc, report_oc, user_oc WHERE user_oc.id = comment_oc.user_id AND report_oc.id = comment_oc.report_id;
