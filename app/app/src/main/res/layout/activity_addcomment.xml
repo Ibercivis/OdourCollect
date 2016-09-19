@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorPrimary"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/brand_logo" />
+
+        <EditText
+            android:id="@+id/commentTextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#ffffff"
+            android:hint="@string/hint_comment"
+            android:padding="10dp"
+            android:singleLine="false"
+            android:textColor="@color/textColorSecundary"
+            android:textColorHint="@color/colorHint"
+            android:minLines="5"
+            android:lines="5"
+            android:layout_weight="1"
+            android:ellipsize="none"
+            android:maxLines="100"
+            android:inputType="textMultiLine"
+            android:gravity="top"
+            android:scrollHorizontally="false" />
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutButtonsAddComment"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_alignParentBottom="true">
+
+            <!-- Add Comment Button -->
+
+            <Button
+                android:id="@+id/btnAddComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="10dip"
+                android:background="@color/colorPrimaryLight"
+                android:text="@string/btn_addcomment"
+                android:textColor="@color/textColorPrimary"
+                android:onClick="addCommentRequest" />
+
+            <!-- Cancel Button -->
+
+            <Button
+                android:id="@+id/btnCancelAddComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="10dip"
+                android:layout_marginLeft="10dip"
+                android:background="@color/colorPrimaryLight"
+                android:text="@string/cancel"
+                android:textColor="@color/textColorPrimary"
+                android:textAllCaps="false"
+                android:textSize="15dp"
+                android:onClick="cancelAddComment"  />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

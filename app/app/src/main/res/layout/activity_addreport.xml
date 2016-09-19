@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorPrimary"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <!--ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/brand_logo" /-->
+
+        <!-- Intensity slider -->
+        <!-- Question and value -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:id="@+id/tvIntensityResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="@string/addreport_question_intensity"
+                android:textColor="#ffffff"/>
+            <TextView
+                android:id="@+id/intensityResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Intensity Result"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal" >
+            <TableRow>
+                <TextView
+                    android:id="@+id/intensity_label1"
+                    android:paddingLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:text="1" />
+
+                <SeekBar
+                    android:id="@+id/sbBar_intensity"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="1" />
+
+                <TextView
+                    android:id="@+id/intensity_label2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="10dp"
+                    android:textColor="#ffffff"
+                    android:text="6" />
+            </TableRow>
+        </TableLayout>
+
+        <!-- Annoyance slider -->
+        <!-- Question and value -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:id="@+id/tvAnnoyanceResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="@string/addreport_question_annoyance"
+                android:textColor="#ffffff"/>
+            <TextView
+                android:id="@+id/annoyanceResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Annoyance Result"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal" >
+            <TableRow>
+                <TextView
+                    android:id="@+id/annoyance_label1"
+                    android:paddingLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:text="-4" />
+
+                <SeekBar
+                    android:id="@+id/sbBar_annoyance"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="1" />
+
+                <TextView
+                    android:id="@+id/annoyance_label2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="10dp"
+                    android:textColor="#ffffff"
+                    android:text="4" />
+            </TableRow>
+        </TableLayout>
+
+        <!--TextView
+            android:id="@+id/tvWeather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:text="@string/addreport_question_weather" /-->
+
+        <!-- Cloud slider -->
+        <!-- Question and value -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:id="@+id/tvCloudResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="@string/addreport_question_cloud"
+                android:textColor="#ffffff"/>
+            <TextView
+                android:id="@+id/cloudResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cloud Result"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal" >
+            <TableRow>
+                <TextView
+                    android:id="@+id/cloud_label1"
+                    android:paddingLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:text="1" />
+
+                <SeekBar
+                    android:id="@+id/sbBar_cloud"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="1" />
+
+                <TextView
+                    android:id="@+id/cloud_label2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="10dp"
+                    android:textColor="#ffffff"
+                    android:text="8" />
+            </TableRow>
+        </TableLayout>
+
+        <!-- Rain slider -->
+        <!-- Question and value -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:id="@+id/tvRainResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="@string/addreport_question_rain"
+                android:textColor="#ffffff"/>
+            <TextView
+                android:id="@+id/rainResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rain Result"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal" >
+            <TableRow>
+                <TextView
+                    android:id="@+id/rain_label1"
+                    android:paddingLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:text="0" />
+
+                <SeekBar
+                    android:id="@+id/sbBar_rain"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="1" />
+
+                <TextView
+                    android:id="@+id/rain_label2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="10dp"
+                    android:textColor="#ffffff"
+                    android:text="5" />
+            </TableRow>
+        </TableLayout>
+
+        <!-- Wind slider -->
+        <!-- Question and value -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:id="@+id/tvWindResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="@string/addreport_question_wind"
+                android:textColor="#ffffff"/>
+            <TextView
+                android:id="@+id/windResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wind Result"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal" >
+            <TableRow>
+                <TextView
+                    android:id="@+id/wind_label1"
+                    android:paddingLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:text="0" />
+
+                <SeekBar
+                    android:id="@+id/sbBar_wind"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="1" />
+
+                <TextView
+                    android:id="@+id/wind_label2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="10dp"
+                    android:textColor="#ffffff"
+                    android:text="5" />
+            </TableRow>
+        </TableLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutSelectsAddReport"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="#ffffff" >
+
+                <Spinner
+                    android:id="@+id/type_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorHint"
+                    android:ellipsize="marquee"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="#ffffff" >
+
+                <Spinner
+                    android:id="@+id/duration_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorHint"
+                    android:ellipsize="marquee"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/addreport_origin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#ffffff"
+            android:hint="@string/hint_where"
+            android:inputType="text"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/textColorSecundary"
+            android:textColorHint="@color/colorHint" />
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutButtonsAddReport"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_alignParentBottom="true">
+
+            <!-- Add Report Button -->
+
+            <Button
+                android:id="@+id/btnAddReport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="10dip"
+                android:layout_marginRight="10dip"
+                android:background="@color/colorPrimaryLight"
+                android:text="@string/btn_addreport"
+                android:textColor="@color/textColorPrimary"
+                android:onClick="addReportRequest" />
+
+            <!-- Cancel Button -->
+
+            <Button
+                android:id="@+id/btnCancelAddReport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="10dip"
+                android:layout_marginLeft="10dip"
+                android:background="@color/colorPrimaryLight"
+                android:text="@string/cancel"
+                android:textColor="@color/textColorPrimary"
+                android:textAllCaps="false"
+                android:textSize="15dp"
+                android:onClick="cancelAddReport"  />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

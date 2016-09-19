@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:id="@+id/map_layout" >
 
     <org.osmdroid.views.MapView
         android:id="@+id/openmapview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>
 
-</LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/map_show_reports"
+        android:color="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:id="@+id/map_show_reports_button"
+        android:onClick="displayReportsActivity" />
+
+</RelativeLayout>

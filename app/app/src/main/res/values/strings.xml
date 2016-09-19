@@ -1,6 +1,74 @@
 <resources>
-    <string name="app_name">OdourCollectApp</string>
-    <string name="main">Odour Collect</string>
+    <string name="app_name">Odour Collect</string>
+    <string name="main">Reports</string>
     <string name="project">The Project</string>
     <string name="methodology">Methodology</string>
+    <string name="action_filter">Filter</string>
+    <string name="action_success">Success Cases</string>
+    <string name="action_add_report">Add report</string>
+
+    <string name="action_add_comment">Add commetn</string>
+
+    <string name="map_show_reports">Show reports</string>
+    <string name="reports_title">Odour Reports</string>
+    <string name="btn_link_to_register">Not registered? Sign up now!</string>
+    <string name="btn_link_to_login">Already registered? Login now!</string>
+    <string name="btn_login">Login</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_mail">Mail Address</string>
+    <string-array name="age_array">
+        <item>Select Age (click to list)</item>
+        <item>Younger 18</item>
+        <item>18-40</item>
+        <item>Older 40</item>
+    </string-array>
+    <string-array name="gender_array">
+        <item>Select Gender (click to list)</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string name="btn_signup">Sign Up</string>
+    <string name="signup_consent_title">INFORMED CONSENT</string>
+    <string name="signup_consent_text">By clicking Sign Up, you allow reuse of data collected under EUPL license.</string>
+    <string-array name="type_array">
+        <item>Type</item>
+        <item>Garbage</item>
+        <item>Sewage</item>
+        <item>Chemical</item>
+        <item>Do not know</item>
+        <item>Other</item>
+    </string-array>
+    <string name="hint_where">Where does it come from?</string>
+    <string-array name="duration_array">
+        <item>Duration</item>
+        <item>Shorter 1 min</item>
+        <item>1 - 5 min</item>
+        <item>Longer 10 min</item>
+    </string-array>
+    <string name="btn_addreport">Add Report</string>
+    <string name="cancel">Cancel</string>
+    <string name="addreport_question_intensity">Is it a strong odour (1 soft, 6 strong)?</string>
+    <string name="addreport_question_annoyance">Is it a nice or foul odour (-4 nice, 4 foul)?</string>
+    <string name="addreport_question_weather">What is the weather like?</string>
+    <string name="addreport_question_cloud">Cloud coverage (1 cloudless, 8 covered): </string>
+    <string name="addreport_question_rain">Rain (0 not a drop, 5 very rainy): </string>
+    <string name="addreport_question_wind">Wind (0 no wind at all, 4 very windy): </string>
+    <string name="btn_addcomment">Add Comment</string>
+    <string name="hint_comment">Write your comment here</string>
+    <string name="title_list_comments_text">Comments</string>
+    <string name="the_project_content">OdourCollect is the App to report your odour complaints. Use the power of your nose: Smell and share!\n\nHave you ever experience odour nuisance at home or at your working place? Do you know where to set up a complaint? Frequent exposure to annoying odours can cause headache, stress or lack of concentration, thus reducing your quality of life. Even though odour complaints are one of the main environmental problems in the EU, there is not specific legislation to control the problem, meaning that citizens are defenceless!\n\nOdourCollect provides a tool to empower citizens, who are suffering from regular odour nuisance, to report the incidence to the world. Odour maps are build based on crowd-sourced odour reports to calculate frequencies and levels of nuisance. Just log in and start reporting, anytime, everywhere! Your nose is indeed the best odour sensor available. Resulting odour maps are open for public consultation and could eventually be used to demonstrate the problem and ask for action to the relevant stakeholders, with the aim of eliminating or significantly reducing the nuisance, thus improving your quality of life.\n\nThe project is being developed within the frame of MYGEOSS, a two-year European project (2015-2016) by the European Commission to develop GEOSS-based (Global Earth Observation System of Systems) smart Internet applications informing European citizens on the changes affecting their local environment. OdourCollect is one of the 66 winners from 15 European countries of the third MYGEOSS open call for innovative ideas. We need you for project success!</string>
+    <string name="methodology_content">OdourCollect is based on a standardized European methodology to evaluate odour episodes through crowd-sourced citizens’ observations: the German standard VDI 3940:2006 (Measurement of odour impact by field inspection: measurement of the impact frequency of recognizable odours), soon to become the European standard CEN 16841.\n\nAlthough the standard defines a strict methodology to measure odours during a certain time in a specific area, where the nuisance is localised, with a specific duration and a certain number of measurements performed by certified standard human “noses” or observers, OdourCollect adapts the methodology with the aim of first identifying those complaint areas where the quality of life is jeopardised by frequent odour exposure. Any citizen can act as the observer and collect geo-localised open data on the odour episode, both in space and time, which can be used to build odour complaint maps. Yes, you too! Yours’ and your neighbours’ observations will demonstrate the problem, thus empowering citizens to claim for solutions. Based on the identified odour maps, scientific odour studies could be deployed on the area to technically characterise the odour problem and find the keys to eliminate it.\n\nReporting an odour complaint with OdourCollect will take just a couple of minutes. After logging in, you will need to fill in the following information:\n\n- Day and hour of the odour perception (automatically done by the App)\n\n- Type of odour perceived (if known, you can always guess!). You can choose between:\n· Garbage\n· Sewage\n· Chemical\n· I do not know\n· Other\n\n- Odour intensity, in a scale of 1 to 6, based on standard VDI 3882 Part 1: Determination of odour intensity:\n· 1: Very weak (it is difficult to perceive it)\n· 2: Weak (almost everybody can notice an odour in the ambient air)\n· 3: Distinct (an odour is clearly present in the air by everybody)\n· 4: Strong (the odour starts to annoy)\n· 5: Very strong (the odour is clearly annoying)\n· 6: Extremely strong (the odour is almost unbearable)\n\n- Level of annoyance, from -4 (if the odour is unpleasant) to 0 (neutral) and to 4 (if the odour is pleasant), based on standard VDI 3882 Part 2: Determination of hedonic odour tone:\n\n- Meteorological conditions during the odour episode. Please observe:\n· Cloud coverage: from 0 to 8 (divide the sky in 8 parts and count how many of them are covered by clouds)\n· Rain: from 0 to 5, being 5 a torrential rain.\n· Wind: from 0 to 4, being 0 no wind, 1 very weak wind, 2 weak-distinct wind, 3 strong wind and 4 hurricane wind.\n\n- Where does the odour come from (if known or suspected)?\n\n- Duration of the odour episode. Please select:\n· Less than 1 minute\n· 1 – 5 min\n· More than 10 minutes\n\nIf you are not interested in reporting an odour episode but are curious about the odours perceived in your area, just check the map and the odour reports filled up by other citizens. You will be able to check on data intensity or level on annoyance, and to filter the map by type of odour or by date. Feel free to navigate and to become and odour hound!\n\nThanks for participating in this citizen science experiment, helping us to build up odour maps!</string>
+    <string name="success_title">Success Cases</string>
+    <string name="success_content">Once we start collecting odour maps and identifying complaint areas, calls for action will be made by relevant odour experts. If an industry is identified as responsible for the odour complaints, plant managers will be contacted accordingly, together with the relevant environmental authorities to report about the problem. If not, the local city council or equivalent will be informed about the situation so as to claim for a solution.</string>
+    <string name="menu_bar_type">Select Type</string>
+    <string name="menu_bar_since">Select Since</string>
+    <string name="menu_bar_until">Select Until</string>
+    <string name="menu_bar_remove">Remove filters</string>
+    <string name="menu_bar_type_garbage">Garbage</string>
+    <string name="menu_bar_type_sewage">Sewage</string>
+    <string name="menu_bar_type_chemical">Chemical</string>
+    <string name="menu_bar_type_dont_know">Do not know</string>
+    <string name="menu_bar_type_other">Other</string>
+
 </resources>

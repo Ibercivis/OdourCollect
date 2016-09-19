@@ -1,0 +1,67 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_add_report"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/action_add_report"
+        app:showAsAction="ifRoom">
+    </item>
+
+    <item
+        android:id="@+id/action_filter"
+        android:icon="@mipmap/ic_filter_list_white_18dp"
+        android:title="@string/action_filter"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/menu_filter_type"
+                android:icon="@mipmap/ic_filter_list_white_18dp"
+                android:title="@string/menu_bar_type"
+                app:showAsAction="ifRoom">
+                <menu>
+                    <item
+                        android:id="@+id/menu_filter_type_garbage"
+                        android:title="@string/menu_bar_type_garbage"
+                        app:showAsAction="ifRoom"/>
+                    <item
+                        android:id="@+id/menu_filter_type_sewage"
+                        android:title="@string/menu_bar_type_sewage"
+                        app:showAsAction="ifRoom"/>
+                    <item
+                        android:id="@+id/menu_filter_type_chemical"
+                        android:title="@string/menu_bar_type_chemical"
+                        app:showAsAction="ifRoom"/>
+                    <item
+                        android:id="@+id/menu_filter_type_dont_know"
+                        android:title="@string/menu_bar_type_dont_know"
+                        app:showAsAction="ifRoom"/>
+                    <item
+                        android:id="@+id/menu_filter_type_other"
+                        android:title="@string/menu_bar_type_other"
+                        app:showAsAction="ifRoom"/>
+                </menu>
+            </item>
+            <item
+                android:id="@+id/menu_filter_since"
+                android:title="@string/menu_bar_since"
+                app:showAsAction="ifRoom"/>
+            <item
+                android:id="@+id/menu_filter_until"
+                android:title="@string/menu_bar_until"
+                app:showAsAction="ifRoom"/>
+            <item
+                android:id="@+id/menu_filter_remove"
+                android:title="@string/menu_bar_remove"
+                app:showAsAction="ifRoom"/>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/action_success"
+        android:title="@string/action_success"
+        app:showAsAction="never">
+    </item>
+
+
+</menu>
