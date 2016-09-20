@@ -7,7 +7,7 @@
     <string name="action_success">Success Cases</string>
     <string name="action_add_report">Add report</string>
 
-    <string name="action_add_comment">Add commetn</string>
+    <string name="action_add_comment">Add comment</string>
 
     <string name="map_show_reports">Show reports</string>
     <string name="reports_title">Odour Reports</string>
@@ -70,5 +70,5 @@
     <string name="menu_bar_type_chemical">Chemical</string>
     <string name="menu_bar_type_dont_know">Do not know</string>
     <string name="menu_bar_type_other">Other</string>
-
+    <string name="hint_type_other">Write which type it is</string>
 </resources>

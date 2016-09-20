@@ -48,10 +48,10 @@ public class CustomList extends ArrayAdapter<String>{
 
                             try {
                                 /* Create info to display in the pop up */
-                                String odourRecordString = "User: "+odourRecord.get("user").toString()
+                                String odourRecordString = "User, date: "+odourRecord.get("user").toString()+" on "+odourRecord.get("report_date").toString()
                                         +"\nType: "+odourRecord.get("type").toString()
-                                        +"\nDate: "+odourRecord.get("report_date").toString()
-                                        +"\nAnnoyance (-4 - 4): "+odourRecord.get("annoyance").toString();
+                                        +"\nAnnoyance (-4 - 4): "+odourRecord.get("annoyance").toString()+", Intensity (1 - 6): "+odourRecord.get("intensity").toString()
+                                        +"\nNumber of comments: "+odourRecord.get("number_comments").toString();
 
                                 txtTitle.setText(odourRecordString);
 

@@ -77,6 +77,8 @@ public class MainFragment extends Fragment implements LocationListener {
 
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+    private TextView filterListTextView;
+
     public MainFragment() {
         // Required empty public constructor
     }
@@ -125,6 +127,9 @@ public class MainFragment extends Fragment implements LocationListener {
         }
 
         populateOverlay();
+
+        filterListTextView = (TextView) ll.findViewById(R.id.filter_list);
+        filterListTextView.setText("");
 
         // Inflate the layout for this fragment
         return ll;
@@ -234,6 +239,8 @@ aux = format.parse("2016-09-11 19:37:29");
         filterTypeChosen = null;
         filterDateSince = null;
         filterDateUntil = null;
+
+        filterListTextView.setText("");
 
         // Refresh the map recreating the overlay with the type chosen
         filterOverlay();
@@ -347,6 +354,24 @@ aux = format.parse("2016-09-11 19:37:29");
 
         // Add the new overlay
         myOpenMapView.getOverlays().add(overlay);
+
+        // Update text view summarizing current filters
+
+        // Check the filters and build the string up
+        String currentFiltersString = "";
+        if (filterTypeChosen != null){
+            currentFiltersString += "Type: "+filterTypeChosen+"\n";
+        }
+        if (filterDateSince != null){
+            currentFiltersString += "Since: "+filterDateSince.toString()+"\n";
+        }
+        if (filterDateUntil != null){
+            currentFiltersString += "Until: "+filterDateUntil.toString();
+        }
+
+        // Update the text view
+        if (filterTypeChosen!= null || filterDateSince != null || filterDateUntil != null)
+            filterListTextView.setText("Current filters\n"+currentFiltersString);
     }
 
     JSONArray getReportsArray () {

@@ -339,6 +339,19 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/addreport_type_other"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#ffffff"
+            android:hint="@string/hint_type_other"
+            android:inputType="text"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="@color/textColorSecundary"
+            android:textColorHint="@color/colorHint" />
+
+        <EditText
             android:id="@+id/addreport_origin"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

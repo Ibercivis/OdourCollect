@@ -1,6 +1,7 @@
 package ibercivis.com.odourcollectapp;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -82,6 +84,7 @@ public class AddReportActivity extends AppCompatActivity {
     int sb_wind_start_position = 0;
     TextView wind_result_value_textview;
 
+    EditText type_other_edit_text;
 
 // Center sliders and check fields to be sent in the POST request
 // Move initializations to separate methods: initSpinners, initSliders
@@ -91,6 +94,9 @@ public class AddReportActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addreport);
+
+        type_other_edit_text = (EditText) findViewById(R.id.addreport_type_other);
+        type_other_edit_text.setVisibility(View.GONE);
 
         type_spinner = (Spinner) findViewById(R.id.type_spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -106,8 +112,14 @@ public class AddReportActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 selected = type_spinner.getSelectedItemPosition();
-                if (selected != 0)
+                if (selected != 0) {
                     type_spinner_item = selected;
+
+                    if (type_spinner.getItemAtPosition(selected).toString().equals("Other")){
+                        type_other_edit_text.setVisibility(View.VISIBLE);
+                    }
+                    else type_other_edit_text.setVisibility(View.GONE);
+                }
                 System.out.println(selected);
 
                 setIdType();
@@ -362,6 +374,8 @@ public class AddReportActivity extends AppCompatActivity {
 
                         if ((int) responseJSON.get("result") == 1) {
 
+                            Intent returnIntent = new Intent();
+                            setResult(Activity.RESULT_OK, returnIntent);
                             finish();
 
                         } else {
@@ -369,6 +383,7 @@ public class AddReportActivity extends AppCompatActivity {
 
                             // Clean the text fields for new entries
                             addreport_origin_textview.setText("");
+                            type_other_edit_text.setText("");
 
                             // Clean spinners
                             type_spinner_item = 0;
@@ -411,7 +426,7 @@ public class AddReportActivity extends AppCompatActivity {
                     addreport_params.put("cloud", String.valueOf(sb_cloud_value));
                     addreport_params.put("rain", String.valueOf(sb_rain_value));
                     addreport_params.put("wind", String.valueOf(sb_wind_value));
-                    addreport_params.put("other_type", addreport_origin_textview.getText().toString());
+                    addreport_params.put("other_type", type_other_edit_text.getText().toString());
                     addreport_params.put("user", session.getUsername());
 
                     // Get the location manager

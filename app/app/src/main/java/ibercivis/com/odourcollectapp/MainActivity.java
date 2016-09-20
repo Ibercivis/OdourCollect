@@ -1,6 +1,7 @@
 package ibercivis.com.odourcollectapp;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -333,7 +334,16 @@ public class MainActivity extends AppCompatActivity {
     /** Add Report Activity */
     public void addReportActivity(View view) {
         Intent intent = new Intent(this, AddReportActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                mainFragmentInstance.populateOverlay();
+            }
+        }
+    }//onActivityResult
 }
