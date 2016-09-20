@@ -125,12 +125,14 @@ public class MainActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast;
         CharSequence text;
+        Intent intent;
+        SessionManager session;
 
         switch (item.getItemId()) {
             case R.id.action_add_report:
                 // User chose the "Settings" item, show the app settings UI...
 
-                SessionManager session = new SessionManager(this);
+                session = new SessionManager(this);
                 if(session.isLoggedIn())
                 {
                     // User logged in, launch add activity
@@ -205,10 +207,28 @@ public class MainActivity extends AppCompatActivity {
 
                 return true;
 
+            case R.id.action_login:
+
+                session = new SessionManager(this);
+                if(session.isLoggedIn())
+                {
+                    text = "You are already logged in.";
+                    toast = Toast.makeText(context, text, duration);
+                    toast.show();
+
+
+                }
+                else
+                {
+                    openLogin(this.findViewById(android.R.id.content));
+                }
+
+                return true;
+
             case R.id.action_success:
                 // User chose the "Settings" item, show the app settings UI...
 
-                Intent intent = new Intent(this, SuccessActivity.class);
+                intent = new Intent(this, SuccessActivity.class);
                 startActivity(intent);
 
                 return true;

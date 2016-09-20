@@ -4,6 +4,7 @@
     <string name="project">The Project</string>
     <string name="methodology">Methodology</string>
     <string name="action_filter">Filter</string>
+    <string name="action_login">Login</string>
     <string name="action_success">Success Cases</string>
     <string name="action_add_report">Add report</string>
 
