@@ -176,6 +176,7 @@ public class MainFragment extends Fragment implements LocationListener {
                     }
                 });
 
+        System.out.println("jsonrequest: "+jsonRequest.toString());
         Volley.newRequestQueue(getContext()).add(jsonRequest);
     }
 
@@ -217,8 +218,28 @@ aux = format.parse("2016-09-11 19:37:29");
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        // Refresh the map recreating the overlay with the type chosen
-        filterOverlay();
+
+        if (filterDateUntil != null){
+            if (filterDateSince.compareTo(filterDateUntil) < 0) {
+                // Refresh the map recreating the overlay with the type chosen
+                filterOverlay();
+            }
+            else {
+                int duration = Toast.LENGTH_LONG;
+                Toast toast;
+                CharSequence text;
+
+                // Until date before than since date, show error
+                text = "Since date is greater than until date! Filter not applied.";
+                toast = Toast.makeText(getContext(), text, duration);
+                toast.show();
+            }
+        }
+        else {
+            // Refresh the map recreating the overlay with the type chosen
+            filterOverlay();
+        }
+
     }
 
     void filterDateUntil (String until) {
@@ -230,8 +251,27 @@ aux = format.parse("2016-09-11 19:37:29");
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        // Refresh the map recreating the overlay with the type chosen
-        filterOverlay();
+
+        if (filterDateSince != null){
+            if (filterDateSince.compareTo(filterDateUntil) < 0) {
+                // Refresh the map recreating the overlay with the type chosen
+                filterOverlay();
+            }
+            else {
+                int duration = Toast.LENGTH_LONG;
+                Toast toast;
+                CharSequence text;
+
+                // Until date before than since date, show error
+                text = "Since date is greater than until date! Filter not applied.";
+                toast = Toast.makeText(getContext(), text, duration);
+                toast.show();
+            }
+        }
+        else {
+            // Refresh the map recreating the overlay with the type chosen
+            filterOverlay();
+        }
     }
 
     void removeFilters () {
@@ -249,7 +289,7 @@ aux = format.parse("2016-09-11 19:37:29");
     void filterOverlay () {
 
         anotherOverlayItemArray = new ArrayList<OverlayItem>();
-
+System.out.println("creating currentreportsarray");
         // Update the current reports array
         currentReportsArray = new JSONArray();
 
@@ -315,7 +355,7 @@ aux = format.parse("2016-09-11 19:37:29");
                     } else if (Integer.parseInt(odourRecord.get("annoyance").toString()) < -2) {
                         myCurrentLocationMarker = ContextCompat.getDrawable(getContext(), R.drawable.marker_good);
                     } else {
-                        myCurrentLocationMarker = getContext().getResources().getDrawable(R.drawable.marker_med);
+                        myCurrentLocationMarker = ContextCompat.getDrawable(getContext(), R.drawable.marker_med);
                     }
 
                     myLocationOverlayItem.setMarker(myCurrentLocationMarker);

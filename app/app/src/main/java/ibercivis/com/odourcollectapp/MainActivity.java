@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private Calendar calendar;
     private int year, month, day;
 
+    private boolean permissionsGranted;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,116 +130,126 @@ public class MainActivity extends AppCompatActivity {
         Intent intent;
         SessionManager session;
 
-        switch (item.getItemId()) {
-            case R.id.action_add_report:
-                // User chose the "Settings" item, show the app settings UI...
+        if (permissionsGranted){
+            switch (item.getItemId()) {
+                case R.id.action_add_report:
+                    // User chose the "Settings" item, show the app settings UI...
 
-                session = new SessionManager(this);
-                if(session.isLoggedIn())
-                {
-                    // User logged in, launch add activity
-                    addReportActivity(this.findViewById(android.R.id.content));
-                }
-                else
-                {
-                    // User not logged in, launch login activity
-                    text = "You have to be logged in to add or comment reports!";
-                    toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                    session = new SessionManager(this);
+                    if(session.isLoggedIn())
+                    {
+                        // User logged in, launch add activity
+                        addReportActivity(this.findViewById(android.R.id.content));
+                    }
+                    else
+                    {
+                        // User not logged in, launch login activity
+                        text = "You have to be logged in to add or comment reports!";
+                        toast = Toast.makeText(context, text, duration);
+                        toast.show();
 
-                    openLogin(this.findViewById(android.R.id.content));
-                }
+                        openLogin(this.findViewById(android.R.id.content));
+                    }
 
-                return true;
+                    return true;
 
-            case R.id.menu_filter_type_garbage:
-                // User chose the "Settings" item, show the app settings UI...
+                case R.id.menu_filter_type_garbage:
+                    // User chose the "Settings" item, show the app settings UI...
 
-                mainFragmentInstance.filterType("Garbage");
+                    mainFragmentInstance.filterType("Garbage");
 
-                return true;
+                    return true;
 
-            case R.id.menu_filter_type_sewage:
-                // User chose the "Settings" item, show the app settings UI...
+                case R.id.menu_filter_type_sewage:
+                    // User chose the "Settings" item, show the app settings UI...
 
-                mainFragmentInstance.filterType("Sewage");
+                    mainFragmentInstance.filterType("Sewage");
 
-                return true;
+                    return true;
 
-            case R.id.menu_filter_type_chemical:
-                // User chose the "Settings" item, show the app settings UI...
+                case R.id.menu_filter_type_chemical:
+                    // User chose the "Settings" item, show the app settings UI...
 
-                mainFragmentInstance.filterType("Chemical");
+                    mainFragmentInstance.filterType("Chemical");
 
-                return true;
+                    return true;
 
-            case R.id.menu_filter_type_dont_know:
-                // User chose the "Settings" item, show the app settings UI...
+                case R.id.menu_filter_type_dont_know:
+                    // User chose the "Settings" item, show the app settings UI...
 
-                mainFragmentInstance.filterType("Do not know");
+                    mainFragmentInstance.filterType("Do not know");
 
-                return true;
+                    return true;
 
-            case R.id.menu_filter_type_other:
-                // User chose the "Settings" item, show the app settings UI...
+                case R.id.menu_filter_type_other:
+                    // User chose the "Settings" item, show the app settings UI...
 
-                mainFragmentInstance.filterType("Other");
+                    mainFragmentInstance.filterType("Other");
 
-                return true;
+                    return true;
 
-            case R.id.menu_filter_since:
-                // User chose the "Settings" item, show the app settings UI...
+                case R.id.menu_filter_since:
+                    // User chose the "Settings" item, show the app settings UI...
 
-//mainFragmentInstance.filterDateSince("2016-09-14 19:37:29");
-                showDialog(1);
+    //mainFragmentInstance.filterDateSince("2016-09-14 19:37:29");
+                    showDialog(1);
 
-                return true;
+                    return true;
 
-            case R.id.menu_filter_until:
-                // User chose the "Settings" item, show the app settings UI...
+                case R.id.menu_filter_until:
+                    // User chose the "Settings" item, show the app settings UI...
 
-//mainFragmentInstance.filterDateUntil("2016-09-17 19:37:29");
-                showDialog(2);
+    //mainFragmentInstance.filterDateUntil("2016-09-17 19:37:29");
+                    showDialog(2);
 
-                return true;
+                    return true;
 
-            case R.id.menu_filter_remove:
+                case R.id.menu_filter_remove:
 
-                mainFragmentInstance.removeFilters();
+                    mainFragmentInstance.removeFilters();
 
-                return true;
+                    return true;
 
-            case R.id.action_login:
+                case R.id.action_login:
 
-                session = new SessionManager(this);
-                if(session.isLoggedIn())
-                {
-                    text = "You are already logged in.";
-                    toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                    session = new SessionManager(this);
+                    if(session.isLoggedIn())
+                    {
+                        text = "You are already logged in.";
+                        toast = Toast.makeText(context, text, duration);
+                        toast.show();
 
 
-                }
-                else
-                {
-                    openLogin(this.findViewById(android.R.id.content));
-                }
+                    }
+                    else
+                    {
+                        openLogin(this.findViewById(android.R.id.content));
+                    }
 
-                return true;
+                    return true;
 
-            case R.id.action_success:
-                // User chose the "Settings" item, show the app settings UI...
+                case R.id.action_success:
+                    // User chose the "Settings" item, show the app settings UI...
 
-                intent = new Intent(this, SuccessActivity.class);
-                startActivity(intent);
+                    intent = new Intent(this, SuccessActivity.class);
+                    startActivity(intent);
 
-                return true;
+                    return true;
 
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
+                default:
+                    // If we got here, the user's action was not recognized.
+                    // Invoke the superclass to handle it.
+                    return super.onOptionsItemSelected(item);
 
+            }
+
+        }
+        else {
+            showPermissionsToast();
+
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            return super.onOptionsItemSelected(item);
         }
     }
 
@@ -246,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkPermissions() {
         List<String> permissions = new ArrayList<>();
-        String message = "osmdroid permissions:";
+        String message = "Odour Collect Permissions:";
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
             message += "\nLocation to show user location.";
@@ -259,7 +271,12 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
             String[] params = permissions.toArray(new String[permissions.size()]);
             requestPermissions(params, REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
-        } // else: We already have permissions, so handle as normal
+            permissionsGranted = false;
+        }
+        else {
+            // else: We already have permissions, so handle as normal
+            permissionsGranted = true;
+        }
     }
 
     @Override
@@ -279,6 +296,9 @@ public class MainActivity extends AppCompatActivity {
                 if (location && storage) {
                     // All Permissions Granted
                     Toast.makeText(MainActivity.this, "All permissions granted", Toast.LENGTH_SHORT).show();
+                    finish();
+                    startActivity(getIntent());
+                    permissionsGranted = true;
                 } else if (location) {
                     Toast.makeText(this, "Storage permission is required to store map tiles to reduce data usage and for offline usage.", Toast.LENGTH_LONG).show();
                 } else if (storage) {
@@ -336,13 +356,26 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    public void showPermissionsToast () {
+        Toast.makeText(MainActivity.this, "Storage permission is required to store map tiles to reduce data usage and for offline usage." +
+                "\nLocation permission is required to show the user's location on map." +
+                "\nPlease, grant these permissions.", Toast.LENGTH_SHORT).show();
+    }
+
     // INTENTS
 
     /** Display Reports Activity */
     public void displayReportsActivity(View view) {
-        Intent intent = new Intent(this, DisplayReportsActivity.class);
-        intent.putExtra("reports_array", mainFragmentInstance.getReportsArray().toString());
-        startActivity(intent);
+        if (permissionsGranted){
+            Intent intent = new Intent(this, DisplayReportsActivity.class);
+            if (mainFragmentInstance.getReportsArray() == null)
+                mainFragmentInstance.populateOverlay();
+            intent.putExtra("reports_array", mainFragmentInstance.getReportsArray().toString());
+            startActivity(intent);
+        }
+        else {
+            showPermissionsToast();
+        }
     }
 
     /** Open Login Activity */
