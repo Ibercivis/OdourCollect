@@ -63,6 +63,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="addCommentActivity"
+            android:layout_marginRight="15dp"
+            />
+
+        <ImageView
+            android:id="@+id/cfa_comment_icon"
+            android:src="@android:drawable/ic_dialog_alert"
+            android:background="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="addCFAActivity"
             />
     </LinearLayout>
 

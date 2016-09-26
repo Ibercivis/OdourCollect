@@ -16,21 +16,22 @@
         android:logo="@mipmap/brand_logo"
         android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DisplayReportsActivity"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+        <activity android:name=".DisplayReportsActivity" android:screenOrientation="portrait" ></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".AddReportActivity" />
-        <activity android:name=".DisplayReportActivity" />
-        <activity android:name=".AddCommentActivity" />
-        <activity android:name=".SuccessActivity" />
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait" />
+        <activity android:name=".SignUpActivity" android:screenOrientation="portrait" />
+        <activity android:name=".AddReportActivity" android:screenOrientation="portrait" />
+        <activity android:name=".DisplayReportActivity" android:screenOrientation="portrait" />
+        <activity android:name=".AddCommentActivity" android:screenOrientation="portrait" />
+        <activity android:name=".SuccessActivity" android:screenOrientation="portrait" />
+        <activity android:name=".AddCFAActivity" android:screenOrientation="portrait" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

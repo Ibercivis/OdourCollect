@@ -46,3 +46,14 @@ PRIMARY KEY (`id`),
 FOREIGN KEY (`user_id`) REFERENCES user_oc(`id`),
 FOREIGN KEY (`report_id`) REFERENCES report_oc(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `cfa_oc` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`cfa_comment` varchar(255) NOT NULL,
+`cfa_comment_date` TIMESTAMP,
+`user_id` int(11) NOT NULL,
+`report_id` int(11) NOT NULL,
+PRIMARY KEY (`id`),
+FOREIGN KEY (`user_id`) REFERENCES user_oc(`id`),
+FOREIGN KEY (`report_id`) REFERENCES report_oc(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

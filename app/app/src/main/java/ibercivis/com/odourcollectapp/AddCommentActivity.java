@@ -69,7 +69,7 @@ public class AddCommentActivity extends AppCompatActivity {
                             Toast toast;
                             CharSequence text;
 
-                            text = "Error while login: " + responseJSON.get("message") + ".";
+                            text = "Error while adding comment: " + responseJSON.get("message") + ".";
                             toast = Toast.makeText(getApplicationContext(), text, duration);
                             toast.show();
 

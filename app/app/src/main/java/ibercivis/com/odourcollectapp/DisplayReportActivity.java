@@ -260,4 +260,30 @@ public class DisplayReportActivity extends AppCompatActivity {
         }
     }
 
+    /** Open Comment Activity */
+    public void addCFAActivity(View view) {
+
+        SessionManager session = new SessionManager(this);
+        if(session.isLoggedIn())
+        {
+            // User logged in, launch add activity
+            Intent intent = new Intent(this, AddCFAActivity.class);
+            intent.putExtra("report_id", report_id);
+            startActivity(intent);
+        }
+        else
+        {
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast;
+            CharSequence text;
+
+            // User not logged in, launch login activity
+            text = "You have to be logged in to call for action!";
+            toast = Toast.makeText(getApplicationContext(), text, duration);
+            toast.show();
+
+            openLoginDisplayReport(this.findViewById(android.R.id.content));
+        }
+    }
+
 }
