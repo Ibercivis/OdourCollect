@@ -119,7 +119,7 @@ public class SignUpActivity extends AppCompatActivity {
             // Input data ok, so go with the request
 
             // Url for the webservice
-            String url = "http://modulos.ibercivis.es/webservice/signup.php";
+            String url = "http://odourcollect.socientize.eu/webservice/signup.php";
 
             RequestQueue queue = Volley.newRequestQueue(this);
             StringRequest sr = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

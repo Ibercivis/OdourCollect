@@ -120,10 +120,21 @@ public class MainFragment extends Fragment implements LocationListener {
             // for ActivityCompat#requestPermissions for more details.
             return ll;
         }
-        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         if( location != null ) {
             currentLocation = new GeoPoint(location.getLatitude(), location.getLongitude());
             myMapController.setCenter(currentLocation);
+        }
+        else {
+            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if( location != null ) {
+                currentLocation = new GeoPoint(location.getLatitude(), location.getLongitude());
+                myMapController.setCenter(currentLocation);
+            }
+            else {
+                GeoPoint startPoint = new GeoPoint(50.936255, 6.957779);
+                myMapController.setCenter(startPoint);
+            }
         }
 
         populateOverlay();
@@ -351,11 +362,11 @@ System.out.println("creating currentreportsarray");
                     /* Set the proper icon according to the annoyance level */
                     Drawable myCurrentLocationMarker = null;
                     if (Integer.parseInt(odourRecord.get("annoyance").toString()) > 2) {
-                        myCurrentLocationMarker = ContextCompat.getDrawable(getContext(), R.drawable.marker_bad);
+                        myCurrentLocationMarker = ContextCompat.getDrawable(this.getContext(), R.drawable.marker_bad);
                     } else if (Integer.parseInt(odourRecord.get("annoyance").toString()) < -2) {
-                        myCurrentLocationMarker = ContextCompat.getDrawable(getContext(), R.drawable.marker_good);
+                        myCurrentLocationMarker = ContextCompat.getDrawable(this.getContext(), R.drawable.marker_good);
                     } else {
-                        myCurrentLocationMarker = ContextCompat.getDrawable(getContext(), R.drawable.marker_med);
+                        myCurrentLocationMarker = ContextCompat.getDrawable(this.getContext(), R.drawable.marker_med);
                     }
 
                     myLocationOverlayItem.setMarker(myCurrentLocationMarker);
