@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -157,35 +159,75 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menu_filter_type_garbage:
                     // User chose the "Settings" item, show the app settings UI...
 
-                    mainFragmentInstance.filterType("Garbage");
+                    if (isConnected() == false){
+                        Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (mainFragmentInstance.getReportsArray() == null){
+                        mainFragmentInstance.populateOverlay();
+                        Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                        mainFragmentInstance.filterType("Garbage");
 
                     return true;
 
                 case R.id.menu_filter_type_sewage:
                     // User chose the "Settings" item, show the app settings UI...
 
-                    mainFragmentInstance.filterType("Sewage");
+                    if (isConnected() == false){
+                        Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (mainFragmentInstance.getReportsArray() == null){
+                        mainFragmentInstance.populateOverlay();
+                        Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                        mainFragmentInstance.filterType("Sewage");
 
                     return true;
 
                 case R.id.menu_filter_type_chemical:
                     // User chose the "Settings" item, show the app settings UI...
 
-                    mainFragmentInstance.filterType("Chemical");
+                    if (isConnected() == false){
+                        Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (mainFragmentInstance.getReportsArray() == null){
+                        mainFragmentInstance.populateOverlay();
+                        Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                        mainFragmentInstance.filterType("Chemical");
 
                     return true;
 
                 case R.id.menu_filter_type_dont_know:
                     // User chose the "Settings" item, show the app settings UI...
 
-                    mainFragmentInstance.filterType("Do not know");
+                    if (isConnected() == false){
+                        Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (mainFragmentInstance.getReportsArray() == null){
+                        mainFragmentInstance.populateOverlay();
+                        Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                        mainFragmentInstance.filterType("Do not know");
 
                     return true;
 
                 case R.id.menu_filter_type_other:
                     // User chose the "Settings" item, show the app settings UI...
 
-                    mainFragmentInstance.filterType("Other");
+                    if (isConnected() == false){
+                        Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (mainFragmentInstance.getReportsArray() == null){
+                        mainFragmentInstance.populateOverlay();
+                        Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                        mainFragmentInstance.filterType("Other");
 
                     return true;
 
@@ -193,7 +235,15 @@ public class MainActivity extends AppCompatActivity {
                     // User chose the "Settings" item, show the app settings UI...
 
     //mainFragmentInstance.filterDateSince("2016-09-14 19:37:29");
-                    showDialog(1);
+                    if (isConnected() == false){
+                        Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (mainFragmentInstance.getReportsArray() == null){
+                        mainFragmentInstance.populateOverlay();
+                        Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                        showDialog(1);
 
                     return true;
 
@@ -201,13 +251,29 @@ public class MainActivity extends AppCompatActivity {
                     // User chose the "Settings" item, show the app settings UI...
 
     //mainFragmentInstance.filterDateUntil("2016-09-17 19:37:29");
-                    showDialog(2);
+                    if (isConnected() == false){
+                        Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (mainFragmentInstance.getReportsArray() == null){
+                        mainFragmentInstance.populateOverlay();
+                        Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                        showDialog(2);
 
                     return true;
 
                 case R.id.menu_filter_remove:
 
-                    mainFragmentInstance.removeFilters();
+                    if (isConnected() == false){
+                        Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (mainFragmentInstance.getReportsArray() == null){
+                        mainFragmentInstance.populateOverlay();
+                        Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                        mainFragmentInstance.removeFilters();
 
                     return true;
 
@@ -262,7 +328,11 @@ public class MainActivity extends AppCompatActivity {
         String message = "Odour Collect Permissions:";
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
-            message += "\nLocation to show user location.";
+            message += "\nLocation to show user location (fine-grained).";
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+            message += "\nLocation to show user location (coarse-grained).";
         }
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -287,23 +357,27 @@ public class MainActivity extends AppCompatActivity {
                 Map<String, Integer> perms = new HashMap<>();
                 // Initial
                 perms.put(Manifest.permission.ACCESS_FINE_LOCATION, PackageManager.PERMISSION_GRANTED);
+                perms.put(Manifest.permission.ACCESS_COARSE_LOCATION, PackageManager.PERMISSION_GRANTED);
                 perms.put(Manifest.permission.WRITE_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
                 // Fill with results
                 for (int i = 0; i < permissions.length; i++)
                     perms.put(permissions[i], grantResults[i]);
                 // Check for ACCESS_FINE_LOCATION and WRITE_EXTERNAL_STORAGE
-                Boolean location = perms.get(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+                Boolean locationFine = perms.get(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+                Boolean locationCoarse = perms.get(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
                 Boolean storage = perms.get(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
-                if (location && storage) {
+                if (locationFine && locationCoarse && storage) {
                     // All Permissions Granted
                     Toast.makeText(MainActivity.this, "All permissions granted", Toast.LENGTH_SHORT).show();
                     finish();
                     startActivity(getIntent());
                     permissionsGranted = true;
-                } else if (location) {
-                    Toast.makeText(this, "Storage permission is required to store map tiles to reduce data usage and for offline usage.", Toast.LENGTH_LONG).show();
+                } else if (locationFine) {
+                    Toast.makeText(this, "Location (fine) permission is required to show the user's location on map.", Toast.LENGTH_LONG).show();
+                } else if (locationCoarse) {
+                    Toast.makeText(this, "Location (coarse) permission is required to show the user's location on map.", Toast.LENGTH_LONG).show();
                 } else if (storage) {
-                    Toast.makeText(this, "Location permission is required to show the user's location on map.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Storage permission is required to store map tiles to reduce data usage and for offline usage.", Toast.LENGTH_LONG).show();
                 } else { // !location && !storage case
                     // Permission Denied
                     Toast.makeText(MainActivity.this, "Storage permission is required to store map tiles to reduce data usage and for offline usage." +
@@ -363,16 +437,31 @@ public class MainActivity extends AppCompatActivity {
                 "\nPlease, grant these permissions.", Toast.LENGTH_SHORT).show();
     }
 
+    public boolean isConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+    }
+
     // INTENTS
 
     /** Display Reports Activity */
     public void displayReportsActivity(View view) {
         if (permissionsGranted){
-            Intent intent = new Intent(this, DisplayReportsActivity.class);
-            if (mainFragmentInstance.getReportsArray() == null)
-                mainFragmentInstance.populateOverlay();
-            intent.putExtra("reports_array", mainFragmentInstance.getReportsArray().toString());
-            startActivity(intent);
+            if (isConnected()){
+                if (mainFragmentInstance.getReportsArray() == null){
+                    mainFragmentInstance.populateOverlay();
+                    Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, push 'SHOW REPORTS' to display them in a few seconds.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Intent intent = new Intent(this, DisplayReportsActivity.class);
+                    intent.putExtra("reports_array", mainFragmentInstance.getReportsArray().toString());
+                    startActivity(intent);
+                }
+            }
+            else {
+                Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to retrieve the reports.", Toast.LENGTH_SHORT).show();
+            }
         }
         else {
             showPermissionsToast();

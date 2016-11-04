@@ -86,6 +86,9 @@ public class AddReportActivity extends AppCompatActivity {
 
     EditText type_other_edit_text;
 
+    MyLocationListener locationListener;
+    LocationManager lm;
+
 // Center sliders and check fields to be sent in the POST request
 // Move initializations to separate methods: initSpinners, initSliders
 // Add hidden text field for option "Other"
@@ -94,6 +97,32 @@ public class AddReportActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addreport);
+
+        locationListener = new MyLocationListener();
+
+        lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
         type_other_edit_text = (EditText) findViewById(R.id.addreport_type_other);
         type_other_edit_text.setVisibility(View.GONE);
@@ -353,6 +382,21 @@ public class AddReportActivity extends AppCompatActivity {
 
     }
 
+    public class MyLocationListener implements LocationListener {
+
+        public void onLocationChanged(Location location) {
+        }
+
+        public void onProviderDisabled(String provider) {
+        }
+
+        public void onProviderEnabled(String provider) {
+        }
+
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+        }
+    }
+
     public void addReportRequest(View view) {
 
         addreport_origin_textview = (TextView) findViewById(R.id.addreport_origin);
@@ -445,15 +489,26 @@ public class AddReportActivity extends AppCompatActivity {
 
                         toast = Toast.makeText(getApplicationContext(), "Location permission must be granted to locate the report", duration);
                         toast.show();
-
-                        return addreport_params;
                     }
-                    Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                    if( location != null ) {
+                    Location location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                    if( location == null ) {
+                        location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                        if( location != null ) {
+                            System.out.println(location);
+                            addreport_params.put("latlng", "("+location.getLatitude()+", "+location.getLongitude()+")");
+                        }
+                    }
+                    else {
                         System.out.println(location);
                         addreport_params.put("latlng", "("+location.getLatitude()+", "+location.getLongitude()+")");
                     }
 
+/*                    Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    if( location != null ) {
+                        System.out.println(location);
+                        addreport_params.put("latlng", "("+location.getLatitude()+", "+location.getLongitude()+")");
+                    }
+*/
                 return addreport_params;
                 }
 
@@ -496,6 +551,45 @@ public class AddReportActivity extends AppCompatActivity {
         valid = checkSelect( type_spinner, "type" ) && valid;
         valid = checkSelect( duration_spinner, "duration" ) && valid;
 
+        // Get the location manager
+        /*LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);*/
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+
+            int duration = Toast.LENGTH_LONG;
+            Toast toast;
+
+            toast = Toast.makeText(getApplicationContext(), "Location permission must be granted to locate the report", duration);
+            toast.show();
+
+            error_check = error_check + "Location permission must be granted to locate the report.\n";
+            valid = false;
+        }
+        Location location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        if( location == null ) {
+            location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if( location == null ) {
+                error_check = error_check + "Location returns null, check location and navigation are enabled and permission granted.\n";
+                valid = false;
+            }
+        }
+
+
+
+
+
+
+/*        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if( location == null ) {
+            error_check = error_check + "Location returns null, check location and navigation are enabled and permission granted.\n";
+        }
+        */
         if (!error_check.equals("")){
             showError(error_check);
         }

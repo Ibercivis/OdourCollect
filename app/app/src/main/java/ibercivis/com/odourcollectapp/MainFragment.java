@@ -147,10 +147,11 @@ public class MainFragment extends Fragment implements LocationListener {
     }
 
     public void onLocationChanged(Location location) {
-        /*GeoPoint newLocation = new GeoPoint(location.getLatitude(), location.getLongitude());
+        GeoPoint newLocation = new GeoPoint(location.getLatitude(), location.getLongitude());
         if (currentLocation != newLocation) {
-                myMapController.setCenter(newLocation);
-        }*/
+            myMapController.setCenter(newLocation);
+            currentLocation = newLocation;
+        }
     }
 
     public void onProviderDisabled(String provider) {
