@@ -921,7 +921,7 @@
             $("#report_section").hide();
             
             // Send data to the back-end
-            JSONdata = { "username": username };
+            JSONdata = { "username": localStorage.user_name };
                 $.post( urlGetuser, JSONdata, null, "json" )
                     .done(function( data, textStatus, jqXHR ) {
                         console.log( "La solicitud se ha completado correctamente." );
