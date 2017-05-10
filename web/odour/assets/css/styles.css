@@ -1,0 +1,200 @@
+/* Global Styles */
+
+.navbar-right {
+  margin-right: 20px !important;
+}
+
+#content {
+  margin-top: 51px;
+}
+
+/* Footer */
+
+footer {
+  margin: 50px auto;
+  text-align: center;
+}
+}
+
+footer ul.quicklinks {
+  margin-bottom: 0;
+  text-transform: uppercase;
+  text-transform: none;
+  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 40px;
+}
+
+footer ul.quicklinks li {
+  margin-right: 15px;
+}
+
+footer ul.quicklinks img {
+  max-height: 30px;
+}
+
+/* Content */
+
+#content h3 {
+  margin-bottom: 1em;
+}
+
+#content p {
+  text-align: justify;
+}
+
+#content p,
+#content li {
+  margin-bottom: 1.2em;
+}
+
+#content li > ul > li {
+  margin-bottom: 0;
+}
+
+#content li > ul {
+  margin-top: 0.5em;
+}
+
+/* Map */
+
+#map-wrapper {
+  height: 60%;
+  position: relative;
+}
+
+.leaflet-control-layers {
+  display: none;
+}
+
+.leaflet-bar-part-single {
+  padding-top: 5px;
+}
+
+#map-extra {
+  margin: 15px;
+}
+
+#form-filter {
+  margin-top: 15px;
+}
+
+.btn-comment {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* Modals */
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 350px;
+  }
+}
+
+.modal-content {
+  border-radius: 3px;
+  border: 1px solid #c5c5c5;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  background-color: white;
+  color: #333333;
+  padding: 2px;
+}
+
+.modal-header {
+  background: #e9e9e9;
+  padding: .4em 1em;
+  border-radius: 3px;
+  position: relative;
+}
+
+.modal-header .modal-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.modal-header .modal-header-close {
+  position: absolute;
+  right: .3em;
+  top: 50%;
+  width: 20px;
+  margin: -10px 0 0 0;
+  padding: 1px;
+  height: 20px;
+
+  border-radius: 3px;
+
+  border: 1px solid #c5c5c5;
+  background: #f6f6f6;
+
+  font-weight: bold;
+  font-size: 1em;
+  line-height: 1em;
+
+  box-sizing: border-box;
+  white-space: nowrap;
+
+  vertical-align: middle;
+  text-align: center;
+}
+
+.modal-footer {
+  margin-top: .10em;
+  padding: .5em 1em .5em .4em;
+}
+
+@media (min-width: 768px) {
+  .modal-xl {
+    width: 90%;
+    max-width: 1400px;
+  }
+}
+
+/* Forms */
+
+.ui-slider {
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+label.sublabel {
+  font-weight: normal;
+}
+
+.form-value {
+  margin-left: 10px;
+}
+
+/* Reports */
+
+.report {
+  border-bottom: 1px solid #337ab7;
+}
+
+.pagination-wrapper {
+  margin-top: 25px;
+}
+
+.report-link,
+.leaflet-container .report-link {
+  color: inherit;
+}
+
+.report-link:hover,
+.report-link:active,
+.leaflet-container .report-link:hover,
+.leaflet-container .report-link:active {
+  text-decoration: none;
+}
+
+.comment {
+  border: 1px solid #eee;
+  border-radius: 3px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+#content .comment p {
+  margin-top: 4px;
+  margin-bottom: 0;
+}

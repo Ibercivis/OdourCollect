@@ -1,0 +1,10 @@
+<?php
+header('Access-Control-Allow-Origin: *');
+
+$db_host = 'my hostname'; //hostname
+$db_user = 'my username'; // username
+$db_password = 'my password'; // password
+$db_name = 'my database name'; //database name
+$conn = mysql_connect($db_host, $db_user, $db_password );
+mysql_select_db($db_name, $conn);
+?>

@@ -1,0 +1,25 @@
+<div id="modal-addcomment">
+  <div class="modal-header">
+    <h4 class="modal-title" translate>Add comment</h4>
+    <button type="button" class="modal-header-close" title="Close" ng-click="close()">&times;</button>
+  </div>
+  <div class="modal-body">
+  	<form class="form" name="commentForm" id="comment_form" ng-submit="add()" novalidate>
+
+      <div class="form-group has-error" ng-show="errors">
+        <p ng-repeat="error in errors" class="help-block">{{ error }}</p>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error': commentForm.comment.$invalid && !commentForm.comment.$pristine}">
+        <label for="comment_addcomment" translate>Add your comment here</label>
+        <textarea class="form-control" name="comment" id="comment_addcomment" rows="3" ng-model="comment" required=""></textarea>
+        <p ng-show="commentForm.comment.$error.required && !commentForm.comment.$pristine" class="help-block" translate>Must write a comment.</p>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-default" ng-click="add()" translate>Add comment</button>
+    <button type="button" class="btn btn-sm btn-default" ng-click="close()" translate>Cancel</button>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<?php
+header('Access-Control-Allow-Origin: *');
+
+require 'PHPMailer/PHPMailerAutoload.php';
+
+$GLOBALS['MAIL_SETTINGS'] = array(
+	"Host" => "my smtp host",
+	"Port" => 587,
+	"SMTPAuth" => true,
+	"SMTPSecure" => "tls",
+	"Username" => "my smtp username",
+	"Password" => "my smtp password",
+	"FromAddr" => "my smtp mail",
+);
+
+
+function send_mail($to_addr, $subject, $html_content, $alt_content='') {
+	$mail = new PHPMailer;
+
+	$mail->isSMTP();
+	$mail->SMTPAuth = $GLOBALS['MAIL_SETTINGS']["SMTPAuth"];
+	$mail->SMTPSecure = $GLOBALS['MAIL_SETTINGS']["SMTPSecure"];
+	$mail->Host = $GLOBALS['MAIL_SETTINGS']["Host"];
+	$mail->Port = $GLOBALS['MAIL_SETTINGS']["Port"];
+	$mail->Username = $GLOBALS['MAIL_SETTINGS']["Username"];
+	$mail->Password = $GLOBALS['MAIL_SETTINGS']["Password"];
+
+	$mail->setFrom($GLOBALS['MAIL_SETTINGS']["FromAddr"]);
+	$mail->addAddress($to_addr);
+
+	$mail->isHTML(true);
+	$mail->Subject = $subject;
+	$mail->Body = $html_content;
+	$mail->AltBody = $alt_content;
+
+	if (!$mail->send()) {
+		return array("sent" => false, "error" => $mail->ErrorInfo);
+	} else {
+		return array("sent" => true);
+	}
+}
+?>

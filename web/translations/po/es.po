@@ -1,0 +1,748 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: odour/assets/partials/addreport.html:72
+msgid "&gt; 10min"
+msgstr "&gt; 10min"
+
+#: odour/assets/partials/signup.html:45
+msgid "&gt; 40"
+msgstr "&gt; 40"
+
+#: odour/assets/partials/signup.html:43
+msgid "&lt; 18"
+msgstr "&lt; 18"
+
+#: odour/assets/partials/addreport.html:70
+msgid "&lt; 1min"
+msgstr "&lt; 1min"
+
+#: odour/assets/partials/methodology.html:50
+msgid "1 - 5 min"
+msgstr "1 - 5min"
+
+#: odour/assets/partials/addreport.html:71
+msgid "1-5 min"
+msgstr "1-5 min"
+
+#: odour/assets/partials/signup.html:44
+msgid "18-40"
+msgstr "18-40"
+
+#: odour/assets/partials/methodology.html:26
+msgid "1: Very weak (it is difficult to perceive it)"
+msgstr "1: Muy débil (olor difícil de percibir)"
+
+#: odour/assets/partials/methodology.html:27
+msgid "2: Weak (almost everybody can notice an odour in the ambient air)"
+msgstr "2: Débil (casi todo el mundo puede notar un olor en el aire ambiente)"
+
+#: odour/assets/partials/methodology.html:28
+msgid "3: Distinct (an odour is clearly present in the air by everybody)"
+msgstr ""
+"3: Distinguible (un olor está claramente presente en el aire para cualquiera)"
+
+#: odour/assets/partials/methodology.html:29
+msgid "4: Strong (the odour starts to annoy)"
+msgstr "4: Fuerte (el olor empieza a molestar)"
+
+#: odour/assets/partials/methodology.html:30
+msgid "5: Very strong (the odour is clearly annoying)"
+msgstr "5: Muy fuerte (el olor es claramente molesto)"
+
+#: odour/assets/partials/methodology.html:31
+msgid "6: Extremely strong (the odour is almost unbearable)"
+msgstr "6: Extremadamente fuerte (el olor es casi insoportable)"
+
+#: odour/assets/partials/login.html:22 odour/assets/partials/signup.html:33
+msgid "A password is required."
+msgstr "Se requiere una contraseña."
+
+#: odour/assets/partials/addcomment.html:22
+#: odour/assets/partials/addcomment.html:3
+#: odour/assets/partials/comment_recorded.html:3
+#: odour/assets/partials/report.html:30
+msgid "Add comment"
+msgstr "Añadir comentario"
+
+#: odour/assets/js/controllers.js:123 odour/assets/partials/addreport.html:3
+#: odour/assets/partials/addreport.html:95
+#: odour/assets/partials/report_recorded.html:3
+msgid "Add report"
+msgstr "Añade informe"
+
+#: odour/assets/partials/addcomment.html:14
+msgid "Add your comment here"
+msgstr "Añade tu comentario aquí"
+
+#: odour/assets/partials/signup.html:40
+msgid "Age"
+msgstr "Edad"
+
+#: odour/assets/partials/lastentries.html:9 odour/assets/partials/map.html:18
+msgid "All"
+msgstr "Todo"
+
+#: odour/assets/partials/methodology.html:7
+msgid ""
+"Although the standard defines a strict methodology to measure odours during "
+"a certain time in a specific area, where the nuisance is localised, with a "
+"specific duration and a certain number of measurements performed by "
+"certified standard human “noses” or observers, OdourCollect adapts the "
+"methodology with the aim of first identifying those complaint areas where "
+"the quality of life is jeopardised by frequent odour exposure. Any citizen "
+"can act as the observer and collect geo-localised open data on the odour "
+"episode, both in space and time, which can be used to build collaborative "
+"odour complaint maps. Yes, you too, since <strong>you have the best sensor "
+"to measure odours: your own nose!</strong> Yours' and your neighbours' "
+"observations will demonstrate the problem, which will empower citizens to "
+"claim for solutions and help them recovering their quality of life. Based on "
+"the identified odour complaint areas, scientific odour studies could be "
+"deployed on the area to technically characterise the odour problem and find "
+"the keys to minimise or eliminate it."
+msgstr ""
+"Aunque el estándar define una metodología estricta para medir los olores "
+"durante un tiempo determinado en un área específica, donde la molestia está "
+"localizada, con una duración específica y un cierto número de mediciones "
+"realizadas por \"narices\" u observadores humanos entrenados y certificados, "
+"OdourCollect adapta la metodología con el objetivo de identificar primero "
+"aquellas áreas donde la calidad de vida se ve amenazada por la exposición "
+"frecuente a olores molestos. Cualquier ciudadano puede actuar como "
+"observador y recolectar datos abiertos geo-localizados, tanto en el espacio "
+"como en el tiempo, sobre los episodios de olor, que pueden utilizarse para "
+"construir mapas colaborativos de quejas por olor. Sí, tú también, ya que "
+"<strong>tienes el mejor sensor para medir los olores: ¡tu propia nariz!</"
+"strong> Tus observaciones y las de tus vecinos demostrarán la existencia del "
+"problema, para reclamar soluciones y permitir que los ciudadanos afectados "
+"recuperen su calidad de vida. Una vez identificada un área de quejas por "
+"olor, los expertos en contaminación odorífera pueden realizar estudios "
+"científicos para caracterizar técnicamente el problema de olores y encontrar "
+"las claves para minimizarlo o eliminarlo."
+
+#: odour/assets/partials/project.html:13
+msgid "And the deliverable for MyGeoss about the project"
+msgstr "Y el informe final sobre el proyecto para MyGeoss"
+
+#: odour/assets/js/controllers.js:252
+#: odour/assets/partials/lastentries.html:24
+#: odour/assets/partials/report.html:12 odour/assets/partials/user.html:11
+msgid "Annoyance (-4 - 4)"
+msgstr "Molestia (-4 - 4)"
+
+#: odour/assets/partials/signup.html:63
+msgid ""
+"By clicking Sign Up, you allow reuse of data collected under EUPL license."
+msgstr ""
+"Al hacer clic en Registrarse, das tu permiso para la reutilización de los "
+"datos recogidos bajo licencia EUPL."
+
+#: odour/assets/partials/addcomment.html:23
+#: odour/assets/partials/addreport.html:96 odour/assets/partials/login.html:31
+#: odour/assets/partials/signup.html:70
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: odour/assets/partials/addreport.html:19 odour/assets/partials/map.html:15
+#: odour/assets/partials/methodology.html:18
+msgid "Chemical"
+msgstr "Químico"
+
+#: odour/assets/partials/report.html:13
+msgid "Cloud coverage (1 - 8)"
+msgstr "Cobertura de nubes"
+
+#: odour/assets/partials/addreport.html:44
+msgid "Cloud coverage:"
+msgstr "Cobertura de nubes:"
+
+#: odour/assets/partials/methodology.html:39
+msgid ""
+"Cloud coverage: from 0 to 8 (divide the sky in 8 parts and count how many of "
+"them are covered by clouds)."
+msgstr ""
+"Cobertura de nubes: de 0 a 8 (divide el cielo en 8 partes y cuenta cuántas "
+"están cubiertas por nubes)."
+
+#: odour/assets/js/controllers.js:255
+msgid "Comment"
+msgstr "Comentar"
+
+#: odour/assets/partials/project.html:13
+msgid ""
+"Data is open data released under EUPL license and available through a "
+"webservice and downloadable"
+msgstr ""
+"Los datos recogidos son datos abiertos publicados bajo licencia EUPL y están "
+"disponibles para descarga"
+
+#: odour/assets/js/controllers.js:250
+#: odour/assets/partials/lastentries.html:21
+#: odour/assets/partials/report.html:9 odour/assets/partials/user.html:8
+msgid "Date"
+msgstr "Fecha"
+
+#: odour/assets/partials/report.html:17
+msgid "Duration"
+msgstr "Duración"
+
+#: odour/assets/partials/methodology.html:47
+msgid "Duration of the odour episode. Please select:"
+msgstr "Duración del episodio de olor. Selecciona:"
+
+#: odour/assets/partials/signup.html:23
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: odour/assets/partials/signup.html:26 odour/assets/partials/signup.html:27
+msgid "Email is too short."
+msgstr "El correo electrónico es demasiado corto."
+
+#: odour/assets/partials/signup.html:25
+msgid "Enter a valid email."
+msgstr "Introduce un correo electrónico válido."
+
+#: odour/assets/partials/user.html:3
+msgid "Entries reported by"
+msgstr "Entradas reportadas por"
+
+#: odour/assets/partials/report.html:3
+msgid "Entry"
+msgstr "Entrada"
+
+#: odour/assets/partials/signup.html:54
+msgid "Female"
+msgstr "Femenino"
+
+#: odour/assets/partials/map.html:10
+msgid "Filter"
+msgstr "Filtrar"
+
+#: odour/assets/partials/map.html:12
+msgid "Filter type of odour"
+msgstr "Filtra tipo de olor"
+
+#: odour/assets/partials/project.html:15
+msgid "For iPhone you can directly use the web"
+msgstr "Para iPhone, puedes utilizar directamente la web"
+
+#: odour/assets/partials/project.html:17
+msgid ""
+"For more information or to report an odour complaint area, please contact us "
+"at"
+msgstr ""
+"Para obtener más información o para informar sobre un área donde existen "
+"quejas por olor, puedes contactar con nosotros en"
+
+#: odour/assets/partials/addreport.html:17 odour/assets/partials/map.html:13
+#: odour/assets/partials/methodology.html:16
+msgid "Garbage"
+msgstr "Residuo"
+
+#: odour/assets/partials/signup.html:51
+msgid "Gender"
+msgstr "Género"
+
+#: odour/assets/partials/geolocation_error.html:3
+msgid "Geolocation error"
+msgstr "Error de geolocalización"
+
+#: odour/assets/partials/project.html:7
+msgid ""
+"Have you ever experience odour nuisance at home or at your working place? Do "
+"you know where to set up a complaint? Frequent exposure to annoying odours "
+"can cause headache, stress, and lack of concentration or respiratory "
+"problems, thus reducing your quality of life. Even though odour complaints "
+"are one of the main environmental problems in the EU, there is no specific "
+"regulation to control the problem, meaning that citizens are defenceless!"
+msgstr ""
+"¿Alguna vez has sufrido molestias por olor en tu casa o lugar de trabajo? "
+"¿Sabes dónde podrías presentar una queja? La exposición frecuente a olores "
+"puede causar dolor de cabeza, estrés, falta de concentración o problemas "
+"respiratorios, reduciendo así tu calidad de vida. Aunque las quejas por olor "
+"son uno de los principales problemas medioambientales en la UE, no existe "
+"una regulación específica para controlar el problema, ¡lo que significa que "
+"los ciudadanos estamos indefensos!"
+
+#: odour/assets/partials/addreport.html:20 odour/assets/partials/map.html:16
+#: odour/assets/partials/methodology.html:19
+msgid "I do not know"
+msgstr "No lo sé"
+
+#: odour/assets/partials/signup.html:62
+msgid "INFORMED CONSENT"
+msgstr "CONSENTIMIENTO INFORMADO"
+
+#: odour/assets/partials/methodology.html:56
+msgid ""
+"If you are not interested in reporting an odour episode but are curious "
+"about the odours perceived in your area, just check the map and the odour "
+"reports filled up by other citizens. You will be able to check on data "
+"intensity or level on annoyance, and to filter the map by type of odour or "
+"by date. Feel free to navigate and to become and odour hound!"
+msgstr ""
+"Si no estás interesado en reportar un episodio de olor, pero tienes "
+"curiosidad sobre los olores percibidos en tu área, simplemente revisa el "
+"mapa y los informes de olores de otros ciudadanos. Podrás comprobar la "
+"intensidad o el nivel de molestia, y filtrar el mapa por tipo de olor. "
+"¡Navega libremente y conviértete en un sabueso del olor!"
+
+#: odour/assets/js/controllers.js:251
+msgid "Intensity"
+msgstr "Intensidad"
+
+#: odour/assets/partials/lastentries.html:23
+#: odour/assets/partials/report.html:11 odour/assets/partials/user.html:10
+msgid "Intensity (1 - 6)"
+msgstr "Intensidad ( 1 - 6)"
+
+#: odour/assets/partials/addreport.html:37
+msgid "Is it a nice or foul odour?"
+msgstr "¿Es un olor agradable o desagradable?"
+
+#: odour/assets/partials/addreport.html:32
+msgid "Is it a strong odour?"
+msgstr "¿Es un olor fuerte?"
+
+#: odour/assets/partials/lastentries.html:3 odour/index.html:73
+msgid "Last entries"
+msgstr "Últimas entradas"
+
+#: odour/assets/partials/methodology.html:49
+msgid "Less than 1 minute"
+msgstr "Menos de 1 minuto"
+
+#: odour/assets/partials/methodology.html:35
+msgid ""
+"Level of annoyance, from -4 (if the odour is unpleasant) to 0 (neutral) and "
+"to 4 (if the odour is pleasant), based on standard VDI 3882 Part 2: "
+"Determination of hedonic odour tone."
+msgstr ""
+"Nivel de molestia, de -4 (si el olor es desagradable) a 0 (neutro) y a 4 (si "
+"el olor es agradable), basado en la norma VDI 3882 Parte 2: Determinación "
+"del tono hedónico del olor."
+
+#: odour/assets/partials/methodology.html:12
+msgid ""
+"Location, day and hour of the odour perception (automatic field if you use "
+"the App for Android or the web from an iPhone; open field if you use a "
+"computer to register your odour episode)"
+msgstr ""
+"Lugar, día y hora de la percepción de olor (campo automático si utilizas la "
+"aplicación móvil o la web a través de un iPhone; campo abierto si utilizas "
+"la web para registrar tu episodio de olor)"
+
+#: odour/assets/partials/login.html:3 odour/assets/partials/nologged.html:3
+#: odour/index.html:86
+msgid "Log in"
+msgstr "Iniciar sesión"
+
+#: odour/assets/partials/login.html:29
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: odour/assets/partials/signup.html:55
+msgid "Male"
+msgstr "Masculino"
+
+#: odour/index.html:70
+msgid "Map"
+msgstr "Mapa"
+
+#: odour/assets/partials/methodology.html:37
+msgid "Meteorological conditions during the odour episode. Please observe:"
+msgstr ""
+"Condiciones meteorológicas durante el episodio de olor. Observa, por favor:"
+
+#: odour/assets/partials/methodology.html:3 odour/index.html:79
+msgid "Methodology"
+msgstr "Metodología"
+
+#: odour/assets/partials/methodology.html:51
+msgid "More than 10 minutes"
+msgstr "Más de 10 minutos"
+
+#: odour/assets/partials/addreport.html:24
+#: odour/assets/partials/addreport.html:74
+#: odour/assets/partials/signup.html:47 odour/assets/partials/signup.html:57
+msgid "Must choose an option."
+msgstr "Debes escoger una opción."
+
+#: odour/assets/partials/addreport.html:25
+msgid "Must describe the odour."
+msgstr "Debes describir el olor."
+
+#: odour/assets/partials/addreport.html:60
+msgid "Must describe the origin of the odour."
+msgstr "Debes describir el origen del olor."
+
+#: odour/assets/partials/addreport.html:89
+msgid "Must set the date and the time when the odour was detected."
+msgstr "Debes establecer la fecha y la hora en la que fue detectado el olor."
+
+#: odour/assets/partials/addcomment.html:16
+msgid "Must write a comment."
+msgstr "Debes describir un comentario."
+
+#: odour/assets/partials/login.html:14 odour/assets/partials/signup.html:14
+msgid "Name"
+msgstr "Nombre"
+
+#: odour/assets/partials/signup.html:18
+msgid "Name is too long."
+msgstr "El nombre es demasiado largo."
+
+#: odour/assets/partials/signup.html:17
+msgid "Name is too short."
+msgstr "El nombre es demasiado corto."
+
+#: odour/assets/partials/lastentries.html:12
+msgid "Nearby"
+msgstr "Cercanas"
+
+#: odour/assets/js/controllers.js:253
+#: odour/assets/partials/lastentries.html:25
+#: odour/assets/partials/user.html:12
+msgid "Number of comments"
+msgstr "Número de comentarios"
+
+#: odour/assets/partials/project.html:13
+msgid ""
+"Odour Collect software is released under GPLv3 (GNU General Public License "
+"versión 3) in"
+msgstr ""
+"El software de OdourCollect se publica bajo licencia GPLv3 (GNU General "
+"Public License versión 3) en"
+
+#: odour/assets/partials/methodology.html:24
+msgid ""
+"Odour intensity, in a scale of 1 to 6, based on standard VDI 3882 Part 1: "
+"Determination of odour intensity:"
+msgstr ""
+"Intensidad del olor, en una escala del 1 al 6, basada en la norma VDI 3882 "
+"Parte 1: Determinación de la intensidad del olor:"
+
+#: odour/assets/partials/methodology.html:5
+msgid ""
+"OdourCollect is based on a standardized European methodology to evaluate "
+"odour episodes through crowd-sourced citizens' observations: the German "
+"standard VDI 3940:2006 (Measurement of odour impact by field inspection: "
+"measurement of the impact frequency of recognizable odours), which has "
+"become in the European standard CEN 16841."
+msgstr ""
+"OdourCollect se basa en una metodología europea estándar para la evaluación "
+"de episodios de olor a través de observaciones recogidas por los ciudadanos "
+"(crowdsourcing): la norma alemana VDI 3940:2006 (Medición del impacto por "
+"olor mediante inspecciones de campo: medición de la frecuencia de impacto de "
+"olores reconocibles), que se ha convertido en la Norma europea CEN 16841."
+
+#: odour/assets/partials/project.html:5
+msgid ""
+"OdourCollect is the App to report your odour complaints. Use the power of "
+"your nose: Smell and share!"
+msgstr ""
+"OdourCollect es la aplicación para reportar tus quejas por olor. Usa el "
+"poder de tu nariz: ¡Huele y comparte!"
+
+#: odour/assets/partials/comment_recorded.html:10
+#: odour/assets/partials/geolocation_error.html:11
+#: odour/assets/partials/nologged.html:10
+#: odour/assets/partials/report_recorded.html:10
+msgid "Ok"
+msgstr "Ok"
+
+#: odour/assets/partials/report.html:16
+msgid "Origin"
+msgstr "Origen"
+
+#: odour/assets/partials/addreport.html:63
+msgid ""
+"Origin may consist of a-z, 0-9, underscores, spaces and must begin with a "
+"letter."
+msgstr ""
+"El origen debe estar formado por los caracteres a-z, 0-9, guiones bajos, "
+"espacios y debe comenzar con una letra."
+
+#: odour/assets/partials/addreport.html:21 odour/assets/partials/map.html:17
+#: odour/assets/partials/methodology.html:20
+msgid "Other"
+msgstr "Otro"
+
+#: odour/assets/partials/addreport.html:28
+msgid ""
+"Other type of odour may consist of a-z, 0-9, underscores, spaces and must "
+"begin with a letter."
+msgstr ""
+"Otro tipo de olor debe estar formado por los caracteres a-z, 0-9, guiones "
+"bajos, espacios y debe comenzar con una letra."
+
+#: odour/assets/partials/login.html:20 odour/assets/partials/signup.html:31
+msgid "Password"
+msgstr "Contraseña"
+
+#: odour/assets/partials/signup.html:36
+msgid "Password field only allow : a-z 0-9"
+msgstr "La contraseña solo puede contener: a-z 0-9"
+
+#: odour/assets/partials/signup.html:35
+msgid "Password is too long."
+msgstr "La contraseña es demasiado larga."
+
+#: odour/assets/partials/signup.html:34
+msgid "Password is too short."
+msgstr "La contraseña es demasiado corta."
+
+#: odour/assets/partials/report.html:14
+msgid "Rain (0 - 5)"
+msgstr "Lluvia (0 - 5)"
+
+#: odour/assets/partials/addreport.html:48
+msgid "Rain:"
+msgstr "Lluvia:"
+
+#: odour/assets/partials/methodology.html:40
+msgid "Rain: from 0 to 5, being 5 a torrential rain."
+msgstr "Lluvia: de 0 a 5, siendo 5 una lluvia torrencial."
+
+#: odour/assets/partials/methodology.html:9
+msgid ""
+"Reporting an odour complaint with OdourCollect will take just a couple of "
+"minutes. After logging in (just choose a name or nickname and provide a "
+"valid e-mail address), you will need to fill in the following information:"
+msgstr ""
+"Informar de una queja por olor con OdourCollect sólo te llevará un par de "
+"minutos. Después de iniciar sesión (simplemente elige un nombre o un apodo y "
+"proporciona una dirección de correo electrónico válida), deberás rellenar la "
+"siguiente información:"
+
+#: odour/assets/partials/signup.html:42
+msgid "Select Age"
+msgstr "Selecciona Edad"
+
+#: odour/assets/partials/addreport.html:69
+msgid "Select Duration"
+msgstr "Selecciona Duración"
+
+#: odour/assets/partials/signup.html:53
+msgid "Select Gender"
+msgstr "Selecciona género"
+
+#: odour/assets/partials/addreport.html:16
+msgid "Select Type of Odour"
+msgstr "Selecciona Tipo de Olor"
+
+#: odour/assets/partials/addreport.html:18 odour/assets/partials/map.html:14
+#: odour/assets/partials/methodology.html:17
+msgid "Sewage"
+msgstr "Alcantarilla"
+
+#: odour/assets/partials/lastentries.html:7
+msgid "Show"
+msgstr "Mostrar"
+
+#: odour/assets/partials/login.html:30 odour/assets/partials/signup.html:69
+msgid "Sign Up"
+msgstr "Registrarse"
+
+#: odour/index.html:92
+msgid "Sign out"
+msgstr "Cerrar sesión"
+
+#: odour/assets/partials/signup.html:3
+msgid "Sign up"
+msgstr "Registrarse"
+
+#: odour/assets/partials/methodology.html:58
+msgid ""
+"Thanks for participating in this citizen science experiment, helping us to "
+"build up collaborative odour maps!"
+msgstr ""
+"¡Gracias por participar en este experimento de ciencia ciudadana, "
+"ayudándonos a construir mapas de olor colaborativos!"
+
+#: odour/assets/partials/project.html:13
+msgid "The Data Management Plan for the project is available"
+msgstr "El Plan de Gestión de Datos del proyecto está disponible"
+
+#: odour/index.html:76
+msgid "The Project"
+msgstr "El Proyecto"
+
+#: odour/assets/partials/comment_recorded.html:7
+msgid "The comment has been recorded."
+msgstr "El comentario ha sido registrado."
+
+#: odour/assets/partials/addreport.html:27
+#: odour/assets/partials/addreport.html:62
+msgid "The description is too long."
+msgstr "La descripción es demasiado larga."
+
+#: odour/assets/partials/addreport.html:26
+#: odour/assets/partials/addreport.html:61
+msgid "The description is too short."
+msgstr "La descripción es demasiado corta."
+
+#: odour/assets/partials/project.html:3
+msgid "The project"
+msgstr "El proyecto"
+
+#: odour/assets/partials/project.html:11
+msgid ""
+"The project is being developed within the frame of MYGEOSS, a two-year "
+"European project (2015-2016) by the European Commission to develop GEOSS-"
+"based (Global Earth Observation System of Systems) smart Internet "
+"applications informing European citizens on the changes affecting their "
+"local environment. OdourCollect is one of the 13 winners from 15 European "
+"countries of the third MYGEOSS open call for innovative ideas. We need you "
+"for project success!"
+msgstr ""
+"El proyecto se ha desarrollado en el marco de MYGEOSS, un proyecto europeo "
+"de dos años de duración (2015-2016) financiado por la Comisión Europea para "
+"desarrollar aplicaciones inteligentes basadas en GEOSS (Sistema de Sistemas "
+"de Observación Global de la Tierra) que informen a los ciudadanos sobre los "
+"cambios que afectan a su medioambiente local. OdourCollect es uno de los 13 "
+"ganadores de 15 países europeos de la tercera convocatoria abierta de "
+"MYGEOSS para Apps innovadoras. ¡Te necesitamos para conseguir el éxito del "
+"proyecto!"
+
+#: odour/assets/partials/report_recorded.html:7
+msgid "The report has been recorded."
+msgstr "El informe ha sido registrado."
+
+#: odour/assets/js/controllers.js:249
+#: odour/assets/partials/lastentries.html:22
+#: odour/assets/partials/report.html:10 odour/assets/partials/user.html:9
+msgid "Type"
+msgstr "Tipo"
+
+#: odour/assets/partials/addreport.html:14
+msgid "Type of odour"
+msgstr "Tipo de olor"
+
+#: odour/assets/partials/methodology.html:14
+msgid ""
+"Type of odour perceived (if known, you can always guess!). You can choose "
+"between:"
+msgstr ""
+"Tipo de olor percibido (si se conoce; sino, ¡siempre puedes intentar "
+"adivinar!). Puedes elegir entre:"
+
+#: odour/assets/js/controllers.js:404 odour/assets/js/controllers.js:440
+#: odour/assets/js/controllers.js:476 odour/assets/js/controllers.js:499
+msgid "Unexpected error."
+msgstr "Error inesperado."
+
+#: odour/assets/js/controllers.js:247
+#: odour/assets/partials/lastentries.html:19
+#: odour/assets/partials/report.html:26 odour/assets/partials/report.html:7
+msgid "User"
+msgstr "Usuario"
+
+#: odour/assets/js/controllers.js:438
+msgid "Username already exists."
+msgstr "El usuario ya existe"
+
+#: odour/assets/js/controllers.js:400
+msgid "Username and password do not match."
+msgstr "El usuario y la contraseña no coinciden."
+
+#: odour/assets/partials/signup.html:19
+msgid ""
+"Username may consist of a-z, 0-9, underscores, spaces and must begin with a "
+"letter."
+msgstr ""
+"El nombre de usuario sólo puede contener: a-z, 0-9, guiones bajos, espacios "
+"y deben empezar por una letra."
+
+#: odour/index.html:89
+msgid "Welcome"
+msgstr "Bienvenido"
+
+#: odour/assets/partials/addreport.html:42
+msgid "What is the weather like?"
+msgstr "¿Qué tiempo hace?"
+
+#: odour/assets/partials/addreport.html:67
+msgid "What was the episode duration?"
+msgstr "¿Cuál fue la duración del episodio?"
+
+#: odour/assets/partials/addreport.html:78
+msgid "When was the odour detected?"
+msgstr "¿Cuándo fue detectado el olor?"
+
+#: odour/assets/partials/methodology.html:45
+msgid ""
+"Where does the odour come from (if known or suspected)? This is important "
+"information to technically discover the odour source where to act."
+msgstr ""
+"¿De dónde procede el olor (si lo sabes o sospechas)? Esta es una información "
+"importante para descubrir técnicamente la fuente de olor sobre la que actuar."
+
+#: odour/assets/partials/report.html:15
+msgid "Wind (0 - 4)"
+msgstr "Viento (0 - 4)"
+
+#: odour/assets/partials/addreport.html:52
+msgid "Wind:"
+msgstr "Viento:"
+
+#: odour/assets/partials/methodology.html:41
+msgid ""
+"Wind: from 0 to 4, being 0 no wind, 1 very weak wind, 2 weak-distinct wind, "
+"3 strong wind and 4 hurricane wind."
+msgstr ""
+"Viento: de 0 a 4, siendo 0: sin viento, 1: viento muy débil, 2: viento débil-"
+"distinguible, 3: viento fuerte y 4: viento huracanado."
+
+#: odour/assets/js/controllers.js:402
+msgid "Wrong username."
+msgstr "Nombre de usuario inválido."
+
+#: odour/assets/partials/nologged.html:7
+msgid "You are not logged in, please log in."
+msgstr "No estás registrado, por favor, inicia sesión."
+
+#: odour/assets/partials/project.html:15
+msgid ""
+"You can also download the app of the project to report from your mobile "
+"device,"
+msgstr ""
+"También puedes descargar la aplicación del proyecto para informar desde tu "
+"dispositivo móvil,"
+
+#: odour/assets/partials/geolocation_error.html:8
+msgid ""
+"You must click on the map to add a report. The \"add report\" button will "
+"not work."
+msgstr ""
+"Debes hacer click en el mapa para añadir un informe. El botón \"añadir "
+"informe\" no funcionará."
+
+#: odour/assets/partials/login.html:16 odour/assets/partials/signup.html:16
+msgid "You name is required."
+msgstr "Se requiere un nombre de usuario."
+
+#: odour/assets/partials/geolocation_error.html:7
+msgid ""
+"Your browser does not support geolocation correctly or it do not have "
+"sufficient permissions."
+msgstr ""
+"Tu navegador no soporta la geolocalización o no tiene suficientes permisos."
+
+#: odour/assets/partials/project.html:13
+msgid "here"
+msgstr "aquí"
+
+#: odour/assets/partials/project.html:15
+msgid "here you have the Android version"
+msgstr "aquí tienes la versión para Android"

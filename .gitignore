@@ -3,6 +3,14 @@
 
 # Private
 web/odour/webservice/db_config.php
+web/odour/webservice/email_config.php
+
+# Translations
+*.mo
+*.pot
+
+# Nodejs
+node_modules/
 
 # Intellij
 *.iml

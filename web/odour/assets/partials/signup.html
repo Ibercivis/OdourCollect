@@ -1,0 +1,72 @@
+<div id="modal-signup">
+  <div class="modal-header">
+    <h4 class="modal-title" translate>Sign up</h4>
+    <button type="button" class="modal-header-close" title="Close" ng-click="close()">&times;</button>
+  </div>
+  <div class="modal-body">
+  	<form class="form" name="signupForm" id="signup_form" ng-submit="signup()" novalidate>
+
+      <div class="form-group has-error" ng-show="errors">
+        <p ng-repeat="error in errors" class="help-block">{{ error }}</p>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error': signupForm.username.$invalid && !signupForm.username.$pristine}">
+        <label for="name_signup" translate>Name</label>
+        <input class="form-control" type="text" name="username" id="name_signup" ng-model="user.username" ng-minlength="3" ng-maxlength="16" required="" textstring>
+        <p ng-show="signupForm.username.$error.required && !signupForm.username.$pristine" class="help-block" translate>You name is required.</p>
+        <p ng-show="signupForm.username.$error.minlength" class="help-block" translate>Name is too short.</p>
+        <p ng-show="signupForm.username.$error.maxlength" class="help-block" translate>Name is too long.</p>
+        <p ng-show="signupForm.username.$error.charset" class="help-block" translate>Username may consist of a-z, 0-9, underscores, spaces and must begin with a letter.</p>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error': signupForm.email.$invalid && !signupForm.email.$pristine}">
+        <label for="email_signup" translate>Email</label>
+        <input class="form-control" type="email" name="email" id="email_signup" ng-model="user.email" ng-minlength="6" ng-maxlength="80" required="">
+        <p ng-show="signupForm.email.$invalid && !signupForm.email.$pristine" class="help-block" translate>Enter a valid email.</p>
+        <p ng-show="signupForm.email.$error.minlength" class="help-block" translate>Email is too short.</p>
+        <p ng-show="signupForm.email.$error.maxlength" class="help-block" translate>Email is too short.</p>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error': signupForm.password.$invalid && !signupForm.password.$pristine}">
+        <label for="password_signup" translate>Password</label><br>
+        <input class="form-control" type="password" name="password" id="password_signup" ng-model="user.password" ng-minlength="5" ng-maxlength="16" required="" password>
+        <p ng-show="signupForm.password.$error.required && !signupForm.password.$pristine" class="help-block" translate>A password is required.</p>
+        <p ng-show="signupForm.password.$error.minlength" class="help-block" translate>Password is too short.</p>
+        <p ng-show="signupForm.password.$error.maxlength" class="help-block" translate>Password is too long.</p>
+        <p ng-show="signupForm.password.$error.charset" class="help-block" translate>Password field only allow : a-z 0-9</p>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error': signupForm.age.$invalid && !signupForm.age.$pristine}">
+        <label for="age_signup" translate>Age</label><br>
+        <select class="form-control" name="age" id="age_signup" ng-model="user.age" required="">
+          <option disabled="" value="" translate>Select Age</option>
+          <option value="<18" translate>&lt; 18</option>
+          <option value="18-40" translate>18-40</option>
+          <option value=">40" translate>&gt; 40</option>
+        </select>
+        <p ng-show="signupForm.age.$error.required && !signupForm.age.$pristine" class="help-block" translate>Must choose an option.</p>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error': signupForm.gender.$invalid && !signupForm.gender.$pristine}">
+        <label for="gender_signup" translate>Gender</label><br>
+        <select class="form-control" name="gender" id="gender_signup" ng-model="user.gender" required="">
+          <option disabled="" value="" translate>Select Gender</option>
+          <option value="Female" translate>Female</option>
+          <option value="Male" translate>Male</option>
+        </select>
+        <p ng-show="signupForm.gender.$error.required && !signupForm.gender.$pristine" class="help-block" translate>Must choose an option.</p>
+      </div>
+
+      <div class="form-group">
+        <br>
+        <p><strong translate>INFORMED CONSENT</strong></p>
+        <p translate>By clicking Sign Up, you allow reuse of data collected under EUPL license.</p>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-default" ng-click="signup()" translate>Sign Up</button>
+    <button type="button" class="btn btn-sm btn-default" ng-click="close()" translate>Cancel</button>
+  </div>
+</div>

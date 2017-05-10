@@ -1,0 +1,25 @@
+<div class="container">
+
+  <h3>{{ 'Entries reported by' | translate }} {{ user.username }}</h3>
+
+  <div class="row">
+    <div class="col-xs-6 report" dir-paginate="report in user.reports | itemsPerPage:10">
+      <a href="#!entry/{{ report.report_id }}" class="report-link">
+        <strong translate>Date </strong>: {{ report.report_date }}<br>
+        <strong translate>Type</strong>: {{ report.type }}<br>
+        <strong translate>Intensity (1 - 6)</strong>: {{ report.intensity }}<br>
+        <strong translate>Annoyance (-4 - 4)</strong>: {{ report.annoyance }}<br>
+        <strong translate>Number of comments</strong>: {{ report.number_comments }}<br>
+      </a>
+    </div>
+  </div>
+
+   <div class="row">
+    <div class="col-xs-12 pagination-wrapper">
+      <nav class="text-center">
+        <dir-pagination-controls max-size="8"></dir-pagination-controls>
+      </nav>
+    </div>
+  </div>
+
+</div>

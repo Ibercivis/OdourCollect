@@ -1,0 +1,22 @@
+<div id="map-wrapper">
+  <leaflet id="map" lf-center="center" defaults="defaults" markers="markers" layers="layers" event-broadcast="events" controls="controls" width="100%" height="100%"></leaflet>
+</div>
+
+<div id="map-extra">
+  <small>Add a report by clicking in the map.</small>
+
+  <form class="form-inline" id="form-filter">
+    <div class="form-group">
+      <label class="sr-only" for="type_filter" translate>Filter</label>
+      <select id="type_filter" class="form-control" ng-model="filters.type" ng-change="filter()">
+        <option disabled="" value="" translate>Filter type of odour</option>
+        <option value="Garbage" translate>Garbage</option>
+        <option value="Sewage" translate>Sewage</option>
+        <option value="Chemical" translate>Chemical</option>
+        <option value="I do not know" translate>I do not know</option>
+        <option value="Other" translate>Other</option>
+        <option value="All" translate>All</option>
+      </select>
+    </div>
+  </form>
+</div>
