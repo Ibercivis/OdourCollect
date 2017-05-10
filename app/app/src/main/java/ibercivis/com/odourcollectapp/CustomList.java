@@ -40,24 +40,24 @@ public class CustomList extends ArrayAdapter<String>{
         JSONObject odourRecord = null;
 
         try {
-                                /* Get the JSON object from the JSON array */
-                            odourRecord = web.getJSONObject(position);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
+            /* Get the JSON object from the JSON array */
+            odourRecord = web.getJSONObject(position);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-                            try {
-                                /* Create info to display in the pop up */
-                                String odourRecordString = "User, date: "+odourRecord.get("user").toString()+" on "+odourRecord.get("report_date").toString()
-                                        +"\nType: "+odourRecord.get("type").toString()
-                                        +"\nAnnoyance (-4 - 4): "+odourRecord.get("annoyance").toString()+", Intensity (1 - 6): "+odourRecord.get("intensity").toString()
-                                        +"\nNumber of comments: "+odourRecord.get("number_comments").toString();
+        try {
+            /* Create info to display in the pop up */
+            String odourRecordString = "User, date: "+odourRecord.get("username").toString()+" on "+odourRecord.get("report_date").toString()
+                    +"\nType: "+odourRecord.get("type").toString()
+                    +"\nAnnoyance (-4 - 4): "+odourRecord.get("annoyance").toString()+", Intensity (1 - 6): "+odourRecord.get("intensity").toString()
+                    +"\nNumber of comments: "+odourRecord.get("number_comments").toString();
 
-                                txtTitle.setText(odourRecordString);
+            txtTitle.setText(odourRecordString);
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         try {
             if (Integer.parseInt(odourRecord.get("annoyance").toString()) > 2) {

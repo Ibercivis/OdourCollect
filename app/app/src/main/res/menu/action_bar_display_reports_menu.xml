@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_display_reports_all"
+        android:title="@string/action_display_reports_all"
+        app:showAsAction="never">
+    </item>
+
+    <item
+        android:id="@+id/action_display_reports_nearby"
+        android:title="@string/action_display_reports_nearby"
+        app:showAsAction="never">
+    </item>
+
+</menu>

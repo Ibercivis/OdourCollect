@@ -44,11 +44,11 @@ public class SessionManager {
         Log.d(TAG, "User activity_login session modified!");
     }
 
-    public boolean isLoggedIn(){
+    public boolean isLoggedIn() {
         return pref.getBoolean(KEY_IS_LOGGEDIN, false);
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return pref.getString(KEY_NAME, "");
     }
 }

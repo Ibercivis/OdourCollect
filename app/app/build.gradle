@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "ibercivis.com.odourcollectapp"
@@ -19,12 +19,18 @@ android {
     }
 }
 
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile 'org.osmdroid:osmdroid-android:5.1@aar'
+    compile 'com.github.MKergall:osmbonuspack:6.3'
     compile 'com.android.support:design:24.2.0'
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
 }

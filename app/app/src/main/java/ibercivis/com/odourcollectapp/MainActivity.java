@@ -28,6 +28,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.osmdroid.util.GeoPoint;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -38,6 +40,7 @@ import java.util.Map;
 /* Tabs code from: http://www.androidhive.info/2015/09/android-material-design-working-with-tabs/ */
 public class MainActivity extends AppCompatActivity {
 
+    private Menu menu;
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -82,9 +85,9 @@ public class MainActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         mainFragmentInstance = new MainFragment();
-        adapter.addFragment(mainFragmentInstance, "Reports");
-        adapter.addFragment(new ProjectFragment(), "The Project");
-        adapter.addFragment(new MethodologyFragment(), "Methodology");
+        adapter.addFragment(mainFragmentInstance, getString(R.string.main));
+        adapter.addFragment(new ProjectFragment(), getString(R.string.project));
+        adapter.addFragment(new MethodologyFragment(), getString(R.string.methodology));
         viewPager.setAdapter(adapter);
     }
 
@@ -120,7 +123,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.action_bar_menu, menu);
+        this.menu = menu;
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        updateMenuTitles();
+        return true;
+    }
+
+    public void updateMenuTitles() {
+        MenuItem loginMenuItem = menu.findItem(R.id.action_login);
+        SessionManager session;
+        session = new SessionManager(this);
+        if (session.isLoggedIn()) {
+            loginMenuItem.setTitle(R.string.action_logout);
+        } else {
+            loginMenuItem.setTitle(R.string.action_login);
+        }
     }
 
     @Override
@@ -163,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
                     }
                     else if (mainFragmentInstance.getReportsArray() == null){
-                        mainFragmentInstance.populateOverlay();
+                        mainFragmentInstance.refreshOverlay();
                         Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
                     }
                     else
@@ -178,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
                     }
                     else if (mainFragmentInstance.getReportsArray() == null){
-                        mainFragmentInstance.populateOverlay();
+                        mainFragmentInstance.refreshOverlay();
                         Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
                     }
                     else
@@ -193,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
                     }
                     else if (mainFragmentInstance.getReportsArray() == null){
-                        mainFragmentInstance.populateOverlay();
+                        mainFragmentInstance.refreshOverlay();
                         Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
                     }
                     else
@@ -208,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
                     }
                     else if (mainFragmentInstance.getReportsArray() == null){
-                        mainFragmentInstance.populateOverlay();
+                        mainFragmentInstance.refreshOverlay();
                         Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
                     }
                     else
@@ -223,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
                     }
                     else if (mainFragmentInstance.getReportsArray() == null){
-                        mainFragmentInstance.populateOverlay();
+                        mainFragmentInstance.refreshOverlay();
                         Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
                     }
                     else
@@ -234,12 +255,12 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menu_filter_since:
                     // User chose the "Settings" item, show the app settings UI...
 
-    //mainFragmentInstance.filterDateSince("2016-09-14 19:37:29");
+                    //mainFragmentInstance.filterDateSince("2016-09-14 19:37:29");
                     if (isConnected() == false){
                         Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
                     }
                     else if (mainFragmentInstance.getReportsArray() == null){
-                        mainFragmentInstance.populateOverlay();
+                        mainFragmentInstance.refreshOverlay();
                         Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
                     }
                     else
@@ -250,12 +271,12 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menu_filter_until:
                     // User chose the "Settings" item, show the app settings UI...
 
-    //mainFragmentInstance.filterDateUntil("2016-09-17 19:37:29");
+                    //mainFragmentInstance.filterDateUntil("2016-09-17 19:37:29");
                     if (isConnected() == false){
                         Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
                     }
                     else if (mainFragmentInstance.getReportsArray() == null){
-                        mainFragmentInstance.populateOverlay();
+                        mainFragmentInstance.refreshOverlay();
                         Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
                     }
                     else
@@ -269,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "You are not connected to Internet, it is not possible to filter the reports.", Toast.LENGTH_SHORT).show();
                     }
                     else if (mainFragmentInstance.getReportsArray() == null){
-                        mainFragmentInstance.populateOverlay();
+                        mainFragmentInstance.refreshOverlay();
                         Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, select the filter again in a few seconds.", Toast.LENGTH_SHORT).show();
                     }
                     else
@@ -282,11 +303,8 @@ public class MainActivity extends AppCompatActivity {
                     session = new SessionManager(this);
                     if(session.isLoggedIn())
                     {
-                        text = "You are already logged in.";
-                        toast = Toast.makeText(context, text, duration);
-                        toast.show();
-
-
+                        session.setLogin(false, "");
+                        updateMenuTitles();
                     }
                     else
                     {
@@ -450,7 +468,7 @@ public class MainActivity extends AppCompatActivity {
         if (permissionsGranted){
             if (isConnected()){
                 if (mainFragmentInstance.getReportsArray() == null){
-                    mainFragmentInstance.populateOverlay();
+                    mainFragmentInstance.refreshOverlay();
                     Toast.makeText(MainActivity.this, "You were not connected to Internet, so reports are being retrieved now, push 'SHOW REPORTS' to display them in a few seconds.", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -485,7 +503,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
-                mainFragmentInstance.populateOverlay();
+                mainFragmentInstance.refreshOverlay();
             }
         }
     }//onActivityResult
