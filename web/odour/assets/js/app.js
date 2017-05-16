@@ -14,7 +14,7 @@ angular.module('odourCollectApp', [
 ])
 
   .constant('SERVER', {
-    baseUrl: 'http://lxbifi86.bifi.unizar.es:8080/webservice',
+    baseUrl: 'https://odourcollect.socientize.eu/webservice',
   })
 
   .constant('AUTH_EVENTS', {
