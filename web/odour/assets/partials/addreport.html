@@ -1,0 +1,98 @@
+<div id="modal-addreport">
+  <div class="modal-header">
+    <h4 class="modal-title" translate>Add report</h4>
+    <button type="button" class="modal-header-close" title="Close" ng-click="close()">&times;</button>
+  </div>
+  <div class="modal-body">
+  	<form class="form" name="reportForm" id="report_form" ng-submit="add()" novalidate>
+
+      <div class="form-group has-error" ng-show="errors">
+        <p ng-repeat="error in errors" class="help-block">{{ error }}</p>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error': (reportForm.type.$invalid && !reportForm.type.$pristine) || report.type == 'Other' && (reportForm.other_type.$invalid || report.other_type == '') && !reportForm.other_type.$pristine}">
+        <label for="type_addreport" translate>Type of odour</label>
+        <select class="form-control" name="type" id="type_addreport" ng-model="report.type" required="">
+          <option disabled="" value="" translate>Select Type of Odour</option>
+          <option value="Garbage" translate>Garbage</option>
+          <option value="Sewage" translate>Sewage</option>
+          <option value="Chemical" translate>Chemical</option>
+          <option value="I do not know" translate>I do not know</option>
+          <option value="Other" translate>Other</option>
+        </select>
+        <input class="form-control" type="text" name="other_type" id="other_type_addreport" ng-model="report.other_type" ng-minlength="3" ng-maxlength="25" ng-show="report.type == 'Other'" textstring>
+        <p ng-show="reportForm.type.$error.required && !reportForm.type.$pristine" class="help-block" translate>Must choose an option.</p>
+        <p ng-show="report.type == 'Other' && report.other_type == '' && !reportForm.other_type.$pristine" class="help-block" translate>Must describe the odour.</p>
+        <p ng-show="report.type == 'Other' && reportForm.other_type.$error.minlength" class="help-block" translate>The description is too short.</p>
+        <p ng-show="report.type == 'Other' && reportForm.other_type.$error.maxlength" class="help-block" translate>The description is too long.</p>
+        <p ng-show="report.type == 'Other' && reportForm.other_type.$error.charset" class="help-block" translate>Other type of odour may consist of a-z, 0-9, underscores, spaces and must begin with a letter.</p>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error': reportForm.intensity.$invalid && !reportForm.intensity.$pristine}">
+        <label for="intensity_addreport" translate>Is it a strong odour?</label><span class="form-value">{{ report.intensity }}</span>
+        <div ui-slider min="1" max="7" name="intensity" id="intensity_addreport" ng-model="report.intensity"></div>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error': reportForm.annoyance.$invalid && !reportForm.annoyance.$pristine}">
+        <label for="annoyance_addreport" translate>Is it a nice or foul odour?</label><span class="form-value">{{ report.annoyance }}</span>
+        <div ui-slider min="-4" max="4" name"annoyance" id="annoyance_addreport" ng-model="report.annoyance"></div>
+      </div>
+
+      <div class="form-group">
+        <label translate>What is the weather like?</label>
+        <div class="form-group" ng-class="{'has-error': reportForm.cloud.$invalid && !reportForm.cloud.$pristine}">
+          <label class="sublabel" for="cloud_addreport" translate>Cloud coverage:</label><span class="form-value">{{ report.cloud }}</span>
+          <div ui-slider min="1" max="8" name"cloud" id="cloud_addreport" ng-model="report.cloud"></div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': reportForm.rain.$invalid && !reportForm.rain.$pristine}">
+          <label class="sublabel" for="rain_addreport" translate>Rain:</label><span class="form-value">{{ report.rain }}</span>
+          <div ui-slider min="0" max="5" name="rain" id="rain_addreport" ng-model="report.rain"></div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': reportForm.wind.$invalid && !reportForm.wind.$pristine}">
+          <label class="sublabel" for="wind_addreport" translate>Wind:</label><span class="form-value">{{ report.wind }}</span>
+          <div ui-slider min="0" max="4" name="wind" id="wind_addreport" ng-model="report.wind"></div>
+        </div>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error': reportForm.origin.$invalid && !reportForm.origin.$pristine}">
+        <label for="origin_addreport">Where does the odour come from?</label>
+        <input class="form-control" type="text" name="origin" id="origin_addreport" ng-model="report.origin" ng-minlength="3" ng-maxlength="25" required="" textstring>
+        <p ng-show="reportForm.origin.$error.required && !reportForm.origin.$pristine" class="help-block" translate>Must describe the origin of the odour.</p>
+        <p ng-show="reportForm.origin.$error.minlength" class="help-block" translate>The description is too short.</p>
+        <p ng-show="reportForm.origin.$error.maxlength" class="help-block" translate>The description is too long.</p>
+        <p ng-show="reportForm.origin.$error.charset" class="help-block" translate>Origin may consist of a-z, 0-9, underscores, spaces and must begin with a letter.</p>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error': reportForm.duration.$invalid && !reportForm.duration.$pristine}">
+        <label for="duration_addreport" translate>What was the episode duration?</label>
+        <select class="form-control" name="duration" id="duration_addreport" ng-model="report.duration" required="">
+          <option disabled="" value="" translate>Select Duration</option>
+          <option value="< 1min" translate>&lt; 1min</option>
+          <option value="1-5 min" translate>1-5 min</option>
+          <option value="> 10min" translate>&gt; 10min</option>
+        </select>
+        <p ng-show="reportForm.duration.$error.required && !reportForm.duration.$pristine" class="help-block" translate>Must choose an option.</p>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error': reportForm.datetime.$invalid && !reportForm.datetime.$pristine}">
+        <label for="datetime_addreport" translate>When was the odour detected?</label>
+        <div class="dropdown">
+          <a class="dropdown-toggle" id="datetime-dropdown" role="button" data-toggle="dropdown" data-target="" href="">
+            <div class="input-group">
+              <input type="text" class="form-control" id="datetime_addreport" name="datetime" data-ng-model="report.datetime" required=""><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <datetimepicker data-ng-model="report.datetime" data-datetimepicker-config="{ dropdownSelector: '#datetime-dropdown', modelType: 'YYYY-MM-DD HH:mm:ss' }"/>
+          </ul>
+        </div>
+        <p ng-show="reportForm.datetime.$error.required && !reportForm.datetime.$pristine" class="help-block" translate>Must set the date and the time when the odour was detected.</p>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-default" ng-click="add()" translate>Add report</button>
+    <button type="button" class="btn btn-sm btn-default" ng-click="close()" translate>Cancel</button>
+  </div>
+</div>

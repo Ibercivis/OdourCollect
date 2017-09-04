@@ -1,0 +1,34 @@
+<div class="container">
+
+  <h3 translate>Entry</h3>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <strong translate>User </strong>: <strong>{{ report.username }}</strong><br>
+      <span>
+        <strong translate>Date </strong>: {{ report.report_date }}<br>
+        <strong translate>Type</strong>: {{ report.type }}<br>
+        <strong translate>Intensity (1 - 6)</strong>: {{ report.intensity }}<br>
+        <strong translate>Annoyance (-4 - 4)</strong>: {{ report.annoyance }}<br>
+        <strong translate>Cloud coverage (1 - 8)</strong>: {{ report.cloud }}<br>
+        <strong translate>Rain (0 - 5)</strong>: {{ report.rain }}<br>
+        <strong translate>Wind (0 - 4)</strong>: {{ report.wind }}<br>
+        <strong translate>Origin</strong>: {{ report.origin }}<br>
+        <strong translate>Duration</strong>: {{ report.duration }}<br>
+      </span>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 30px">
+    <div class="col-xs-12">
+      <h4>Comments:</h4>
+      <div class="comment" ng-repeat="comment in report.comments">
+        <small><strong translate>User</strong>: <strong>{{ comment.username }}</strong> - {{ comment.comment_date }}</small><br>
+        <p>{{ comment.comment }}</p>
+      </div>
+
+      <a href="" class="btn btn-sm btn-default" ng-click="addComment()" translate>Add comment</a>
+    </div>
+  </div>
+
+</div>

@@ -1,12 +1,13 @@
 package ibercivis.com.odourcollectapp;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.hardware.SensorManager;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -14,13 +15,10 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,55 +27,45 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.osmdroid.api.IMapController;
-import org.osmdroid.tileprovider.constants.OpenStreetMapTileProviderConstants;
-import org.osmdroid.tileprovider.tilesource.ITileSource;
+import org.osmdroid.bonuspack.clustering.RadiusMarkerClusterer;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
-import org.osmdroid.views.overlay.ItemizedIconOverlay;
-import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
-import org.osmdroid.views.overlay.OverlayItem;
+import org.osmdroid.views.overlay.Marker;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-
-/* Open Street Maps
-
-http://androcode.es/2012/06/osmdroid-introduccion-a-openstreetmap-en-android-osm-parte-i/
-
-Check portrait, landscape, and so
-
- */
 
 
 public class MainFragment extends Fragment implements LocationListener {
+    // UI
+    private TextView filterListTextView;
 
+    // Map
     private MapView myOpenMapView;
     private IMapController myMapController;
     private LocationManager locationManager;
     private LocationListener locationListener;
     private GeoPoint currentLocation;
 
-    private ArrayList<OverlayItem> anotherOverlayItemArray;
-
+    // API response
     private JSONArray reportsArray;
     private JSONArray currentReportsArray;
+
+    // Filters
     private String filterTypeChosen = null;
     private Date filterDateSince = null;
     private Date filterDateUntil = null;
 
-    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    private TextView filterListTextView;
 
     public MainFragment() {
         // Required empty public constructor
@@ -89,56 +77,23 @@ public class MainFragment extends Fragment implements LocationListener {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RelativeLayout ll = (RelativeLayout) inflater.inflate(R.layout.fragment_main, container, false);
-        //important! set your user agent to prevent getting banned from the osm servers
-        org.osmdroid.tileprovider.constants.OpenStreetMapTileProviderConstants.setUserAgentValue(BuildConfig.APPLICATION_ID);
 
-        myOpenMapView = (MapView) ll.findViewById(R.id.openmapview);
-
-        final ITileSource tileSource = TileSourceFactory.MAPNIK;
-        myOpenMapView.setTileSource(tileSource);
-
-        // Add default zoom buttons and ability to zoom with 2 fingers (multi-touch)
-        myOpenMapView.setBuiltInZoomControls(true);
-        myOpenMapView.setMultiTouchControls(true);
-
-        myMapController = myOpenMapView.getController();
-        myMapController.setZoom(15);
-
-        // Get the location manager
-        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+        // Set the map
+        try {
+            setMap(ll);
+        } catch (SecurityException e) {
+            // Invalid permissions
+            Toast toast = Toast.makeText(getContext(), "Invalid permissions", Toast.LENGTH_SHORT);
+            toast.show();
             return ll;
         }
-        Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        if( location != null ) {
-            currentLocation = new GeoPoint(location.getLatitude(), location.getLongitude());
-            myMapController.setCenter(currentLocation);
-        }
-        else {
-            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            if( location != null ) {
-                currentLocation = new GeoPoint(location.getLatitude(), location.getLongitude());
-                myMapController.setCenter(currentLocation);
-            }
-            else {
-                GeoPoint startPoint = new GeoPoint(50.936255, 6.957779);
-                myMapController.setCenter(startPoint);
-            }
-        }
 
-        populateOverlay();
+        // Set the markers
+        getMarkers();
 
+        // UI items
         filterListTextView = (TextView) ll.findViewById(R.id.filter_list);
         filterListTextView.setText("");
 
@@ -163,69 +118,18 @@ public class MainFragment extends Fragment implements LocationListener {
     public void onStatusChanged(String provider, int status, Bundle extras) {
     }
 
-    protected void populateOverlay () {
-
-        String url = "http://modulos.ibercivis.es/webservice/getreports.php";
-
-        final JsonArrayRequest jsonRequest = new JsonArrayRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        // the response is already constructed as a JSONObject!
-                        String responseString = response.toString();
-                        System.out.println(responseString);
-
-                        reportsArray = response;
-
-                        filterOverlay();
-
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                });
-
-        System.out.println("jsonrequest: "+jsonRequest.toString());
-        Volley.newRequestQueue(getContext()).add(jsonRequest);
+    public JSONArray getReportsArray () {
+        return currentReportsArray;
     }
 
-    void filterType (String type) {
-
-        // Set the type chosen by the user
+    public void filterType(String type) {
         filterTypeChosen = type;
-
-        // Refresh the map recreating the overlay with the type chosen
-        filterOverlay();
+        refreshOverlay();
     }
 
-    void filterDateSince (String since) {
-/* Date aux = null;
-        // Set the type chosen by the user
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    public void filterDateSince(String since) {
         try {
-            filterDateSince = format.parse(since);
-aux = format.parse("2016-09-11 19:37:29");
-            System.out.println(filterDateSince);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-       if (filterDateSince.compareTo(aux)<0)
-        {
-            System.out.println("aux is Greater than my filterDateSince");
-        }
-        else {
-            System.out.println("filterDateSince is Greater than my aux");
-        }
-*/
-
-        // Set the since date chosen by the user
-        try {
-            filterDateSince = format.parse(since);
+            filterDateSince = dateFormat.parse(since);
         } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -233,8 +137,7 @@ aux = format.parse("2016-09-11 19:37:29");
 
         if (filterDateUntil != null){
             if (filterDateSince.compareTo(filterDateUntil) < 0) {
-                // Refresh the map recreating the overlay with the type chosen
-                filterOverlay();
+                refreshOverlay();
             }
             else {
                 int duration = Toast.LENGTH_LONG;
@@ -248,17 +151,13 @@ aux = format.parse("2016-09-11 19:37:29");
             }
         }
         else {
-            // Refresh the map recreating the overlay with the type chosen
-            filterOverlay();
+            refreshOverlay();
         }
-
     }
 
-    void filterDateUntil (String until) {
-
-        // Set the since date chosen by the user
+    public void filterDateUntil(String until) {
         try {
-            filterDateUntil = format.parse(until);
+            filterDateUntil = dateFormat.parse(until);
         } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -266,8 +165,7 @@ aux = format.parse("2016-09-11 19:37:29");
 
         if (filterDateSince != null){
             if (filterDateSince.compareTo(filterDateUntil) < 0) {
-                // Refresh the map recreating the overlay with the type chosen
-                filterOverlay();
+                refreshOverlay();
             }
             else {
                 int duration = Toast.LENGTH_LONG;
@@ -281,153 +179,219 @@ aux = format.parse("2016-09-11 19:37:29");
             }
         }
         else {
-            // Refresh the map recreating the overlay with the type chosen
-            filterOverlay();
+            refreshOverlay();
         }
     }
 
-    void removeFilters () {
-
+    public void removeFilters() {
         filterTypeChosen = null;
         filterDateSince = null;
         filterDateUntil = null;
 
         filterListTextView.setText("");
 
-        // Refresh the map recreating the overlay with the type chosen
-        filterOverlay();
+        refreshOverlay();
     }
 
-    void filterOverlay () {
-
-        anotherOverlayItemArray = new ArrayList<OverlayItem>();
-System.out.println("creating currentreportsarray");
-        // Update the current reports array
+    public void refreshOverlay() {
         currentReportsArray = new JSONArray();
 
-        /* Go through the response reading the whole records and creating the overlay items */
-        for(int i=0; i<reportsArray.length(); i++){
-            OverlayItem myLocationOverlayItem = null;
-            JSONObject odourRecord = null;
-
-            try {
-                                /* Get the JSON object from the JSON array */
-                odourRecord = reportsArray.getJSONObject(i);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                Date reportDate = format.parse(odourRecord.get("report_date").toString());
-
-                // This if sentence check all the possibilities for the three filter options ordered like this:
-                // Every filter can take two values (0, 1) considering that the filter has been set or not for type, since and until
-                // (Just a help for the developer to understand the following condition)
-                //      000 -> No filter
-                //      001 -> Filter by until
-                //      010 -> Filter by since
-                //      011 -> Filter by since and until
-                //      100 -> Filter only by type
-                //      101 -> Filter by type and until
-                //      110 -> Filter by type and since
-                //      111 -> Filter by type, since and until
-                if (((filterTypeChosen == null)&&(filterDateSince == null)&&(filterDateUntil == null))
-                        || ((filterTypeChosen == null)&&(filterDateSince == null)&&(filterDateUntil != null)&&(filterDateUntil.compareTo(reportDate)>0))
-                        || ((filterTypeChosen == null)&&(filterDateSince != null)&&(filterDateUntil == null)&&(filterDateSince.compareTo(reportDate)<0))
-                        || ((filterTypeChosen == null)&&(filterDateSince != null)&&(filterDateUntil != null)&&(filterDateSince.compareTo(reportDate)<0)
-                        &&(filterDateUntil.compareTo(reportDate)>0))
-                        || ((filterTypeChosen != null)&&(filterDateSince == null)&&(filterDateUntil == null)&&(filterTypeChosen.equals(odourRecord.get("type").toString())))
-                        || ((filterTypeChosen != null)&&(filterDateSince == null)&&(filterDateUntil != null)&&(filterTypeChosen.equals(odourRecord.get("type").toString()))
-                        &&(filterDateUntil.compareTo(reportDate)>0))
-                        || ((filterTypeChosen != null)&&(filterDateSince != null)&&(filterDateUntil == null)&&(filterTypeChosen.equals(odourRecord.get("type").toString()))
-                        &&(filterDateSince.compareTo(reportDate)<0))
-                        || ((filterTypeChosen != null)&&(filterDateSince != null)&&(filterDateUntil != null)&&(filterTypeChosen.equals(odourRecord.get("type").toString()))
-                        &&(filterDateSince.compareTo(reportDate)<0)&&(filterDateUntil.compareTo(reportDate)>0))) {
-
-                    /* Create info to display in the pop up */
-                    String odourRecordString = "User: " + odourRecord.get("user").toString()
-                            + "\nType: " + odourRecord.get("type").toString()
-                            + "\nDate: " + odourRecord.get("report_date").toString()
-                            + "\nIntensity (1 - 6): " + odourRecord.get("intensity").toString()
-                            + "\nAnnoyance (-4 - 4): " + odourRecord.get("annoyance").toString()
-                            + "\nNumber of comments: " + odourRecord.get("number_comments").toString();
-
-                    System.out.println(odourRecordString);
-
-                    /* Create the overlay item */
-                    myLocationOverlayItem = new OverlayItem("",
-                            odourRecordString,
-                            new GeoPoint(new Double(odourRecord.get("latitude").toString()),
-                                    new Double(odourRecord.get("longitude").toString())));
-
-                    /* Set the proper icon according to the annoyance level */
-                    Drawable myCurrentLocationMarker = null;
-                    if (Integer.parseInt(odourRecord.get("annoyance").toString()) > 2) {
-                        myCurrentLocationMarker = ContextCompat.getDrawable(this.getContext(), R.drawable.marker_bad);
-                    } else if (Integer.parseInt(odourRecord.get("annoyance").toString()) < -2) {
-                        myCurrentLocationMarker = ContextCompat.getDrawable(this.getContext(), R.drawable.marker_good);
-                    } else {
-                        myCurrentLocationMarker = ContextCompat.getDrawable(this.getContext(), R.drawable.marker_med);
-                    }
-
-                    myLocationOverlayItem.setMarker(myCurrentLocationMarker);
-                    anotherOverlayItemArray.add(myLocationOverlayItem);
-
-                    currentReportsArray.put(odourRecord);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-
-        ItemizedIconOverlay.OnItemGestureListener<OverlayItem> myOnItemGestureListener = new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
-
-            @Override
-            public boolean onItemLongPress(int arg0, OverlayItem arg1) {
-                // TODO Auto-generated method stub
-                return false;
-            }
-
-            @Override
-            public boolean onItemSingleTapUp(int index, OverlayItem item) {
-                return true;
-            }
-
-        };
-
-        // Create the new overlay with the proper items
-        MyOwnItemizedOverlay overlay = new MyOwnItemizedOverlay(getContext(), anotherOverlayItemArray);
-
-        // Clear and invalidate the former overlays
+        /* Marker cluster overlay */
+        RadiusMarkerClusterer markerCluster= new RadiusMarkerClusterer(getActivity());
+        Drawable clusterIconDrawable = ContextCompat.getDrawable(getActivity(), R.drawable.marker_cluster);
+        Bitmap clusterIcon = ((BitmapDrawable) clusterIconDrawable).getBitmap();
+        markerCluster.setIcon(clusterIcon);
         myOpenMapView.getOverlays().clear();
         myOpenMapView.invalidate();
+        myOpenMapView.getOverlays().add(markerCluster);
 
-        // Add the new overlay
-        myOpenMapView.getOverlays().add(overlay);
+        /* Go through the response reading the whole records and creating the overlay items */
+        for (int i=0; i<reportsArray.length(); i++) {
+            JSONObject record;
 
-        // Update text view summarizing current filters
-
-        // Check the filters and build the string up
-        String currentFiltersString = "";
-        if (filterTypeChosen != null){
-            currentFiltersString += "Type: "+filterTypeChosen+"\n";
+            try {
+                record = reportsArray.getJSONObject(i);
+                Marker marker = createMarker(record);
+                markerCluster.add(marker);
+                currentReportsArray.put(record);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        if (filterDateSince != null){
-            currentFiltersString += "Since: "+filterDateSince.toString()+"\n";
-        }
-        if (filterDateUntil != null){
-            currentFiltersString += "Until: "+filterDateUntil.toString();
-        }
-
-        // Update the text view
-        if (filterTypeChosen!= null || filterDateSince != null || filterDateUntil != null)
-            filterListTextView.setText("Current filters\n"+currentFiltersString);
     }
 
-    JSONArray getReportsArray () {
+    private Marker createMarker(JSONObject record) throws JSONException, ParseException, ClassCastException {
+        Marker marker = null;
 
-        return currentReportsArray;
+        if ( ! isValidRecord(record) ) {
+            throw new JSONException("Invalid record");
+        }
+
+        final int reportId = record.getInt("report_id");
+
+
+        /* Create info to display in the pop up */
+        String recordString = "User: " + record.get("username").toString()
+                + "\nType: " + record.get("type").toString()
+                + "\nDate: " + record.get("report_date").toString()
+                + "\nIntensity (1 - 6): " + record.get("intensity").toString()
+                + "\nAnnoyance (-4 - 4): " + record.get("annoyance").toString()
+                + "\nNumber of comments: " + record.get("number_comments").toString();
+
+        //System.out.println(recordString);
+
+        marker = new Marker(myOpenMapView);
+        GeoPoint geoPoint = new GeoPoint(
+                new Double(record.get("latitude").toString()),
+                new Double(record.get("longitude").toString())
+        );
+
+        /* Set the proper icon according to the annoyance level */
+        int level = Integer.parseInt(record.get("annoyance").toString());
+        Drawable markerIcon = getMarkerIcon(level);
+
+        marker.setPosition(geoPoint);
+        marker.setTitle("");
+        marker.setSnippet(recordString);
+        marker.setIcon(markerIcon);
+
+        marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker, MapView mapView) {
+                showMarkerDialog(marker, reportId);
+                return true;
+            }
+        });
+
+        return marker;
+    }
+
+    private boolean isValidRecord(JSONObject record) throws JSONException, ParseException {
+        Date reportDate = dateFormat.parse(record.get("report_date").toString());
+
+        // This if sentence check all the possibilities for the three filter options ordered like this:
+        // Every filter can take two values (0, 1) considering that the filter has been set or not for type, since and until
+        // (Just a help for the developer to understand the following condition)
+        //      000 -> No filter
+        //      001 -> Filter by until
+        //      010 -> Filter by since
+        //      011 -> Filter by since and until
+        //      100 -> Filter only by type
+        //      101 -> Filter by type and until
+        //      110 -> Filter by type and since
+        //      111 -> Filter by type, since and until
+        if (((filterTypeChosen == null) && (filterDateSince == null) && (filterDateUntil == null))
+                || ((filterTypeChosen == null) && (filterDateSince == null) && (filterDateUntil != null) && (filterDateUntil.compareTo(reportDate) > 0))
+                || ((filterTypeChosen == null) && (filterDateSince != null) && (filterDateUntil == null) && (filterDateSince.compareTo(reportDate) < 0))
+                || ((filterTypeChosen == null) && (filterDateSince != null) && (filterDateUntil != null) && (filterDateSince.compareTo(reportDate) < 0)
+                && (filterDateUntil.compareTo(reportDate) > 0))
+                || ((filterTypeChosen != null) && (filterDateSince == null) && (filterDateUntil == null) && (filterTypeChosen.equals(record.get("type").toString())))
+                || ((filterTypeChosen != null) && (filterDateSince == null) && (filterDateUntil != null) && (filterTypeChosen.equals(record.get("type").toString()))
+                && (filterDateUntil.compareTo(reportDate) > 0))
+                || ((filterTypeChosen != null) && (filterDateSince != null) && (filterDateUntil == null) && (filterTypeChosen.equals(record.get("type").toString()))
+                && (filterDateSince.compareTo(reportDate) < 0))
+                || ((filterTypeChosen != null) && (filterDateSince != null) && (filterDateUntil != null) && (filterTypeChosen.equals(record.get("type").toString()))
+                && (filterDateSince.compareTo(reportDate) < 0) && (filterDateUntil.compareTo(reportDate) > 0))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private  Drawable getMarkerIcon(int level) {
+        if (level > 2) {
+            return ContextCompat.getDrawable(getContext(), R.drawable.marker_bad);
+        } else if (level < -2) {
+            return ContextCompat.getDrawable(getContext(), R.drawable.marker_good);
+        } else {
+            return ContextCompat.getDrawable(getContext(), R.drawable.marker_med);
+        }
+    }
+
+    private void showMarkerDialog(Marker marker, final int reportId) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+        dialog.setTitle(marker.getTitle());
+        dialog.setMessage(marker.getSnippet());
+        dialog.setPositiveButton(R.string.view_details, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(getActivity(), DisplayReportActivity.class);
+                intent.putExtra("report_id", reportId);
+                startActivity(intent);
+            }
+        });
+
+        dialog.show();
+    }
+
+    private void setMap(RelativeLayout ll) {
+        // important! set your user agent to prevent getting banned from the osm servers
+        org.osmdroid.tileprovider.constants.OpenStreetMapTileProviderConstants.setUserAgentValue(BuildConfig.APPLICATION_ID);
+
+        myOpenMapView = (MapView) ll.findViewById(R.id.openmapview);
+
+        myOpenMapView.setTileSource(TileSourceFactory.MAPNIK);
+
+        // Add default zoom buttons and ability to zoom with 2 fingers (multi-touch)
+        myOpenMapView.setBuiltInZoomControls(true);
+        myOpenMapView.setMultiTouchControls(true);
+
+        myOpenMapView.setMinZoomLevel(3);
+        myOpenMapView.setMaxZoomLevel(19);
+
+        myMapController = myOpenMapView.getController();
+        myMapController.setZoom(15);
+
+        // Get the location manager
+        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        // TODO: getcontext warning API level
+        if (ActivityCompat.checkSelfPermission(getContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            throw new SecurityException();
+        }
+
+        Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        if( location != null ) {
+            currentLocation = new GeoPoint(location.getLatitude(), location.getLongitude());
+            myMapController.setCenter(currentLocation);
+        }
+        else {
+            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if( location != null ) {
+                currentLocation = new GeoPoint(location.getLatitude(), location.getLongitude());
+                myMapController.setCenter(currentLocation);
+            }
+            else {
+                GeoPoint startPoint = new GeoPoint(50.936255, 6.957779);
+                myMapController.setCenter(startPoint);
+            }
+        }
+    }
+
+    private void getMarkers() {
+        String url = getString(R.string.base_url) + "/getreports.php";
+
+        final JsonArrayRequest jsonAllRequest = new JsonArrayRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        reportsArray = response;
+                        refreshOverlay();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                });
+
+        Volley.newRequestQueue(getContext()).add(jsonAllRequest);
     }
 }

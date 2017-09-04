@@ -42,7 +42,7 @@ public class AddCommentActivity extends AppCompatActivity {
             // Input data ok, so go with the request
 
             // Url for the webservice
-            String url = "http://modulos.ibercivis.es/webservice/addcomment.php";
+            String url = getString(R.string.base_url) + "/addcomment.php";
 
             RequestQueue queue = Volley.newRequestQueue(this);
             StringRequest sr = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

@@ -33,6 +33,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.osmdroid.util.GeoPoint;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -405,7 +407,7 @@ public class AddReportActivity extends AppCompatActivity {
             // Input data ok, so go with the request
 
             // Url for the webservice
-            String url = "http://modulos.ibercivis.es/webservice/addreport.php";
+            String url = getString(R.string.base_url) + "/addreport.php";
 
             RequestQueue queue = Volley.newRequestQueue(this);
             StringRequest sr = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -473,6 +475,9 @@ public class AddReportActivity extends AppCompatActivity {
                     addreport_params.put("other_type", type_other_edit_text.getText().toString());
                     addreport_params.put("user", session.getUsername());
 
+                    SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    addreport_params.put("datetime", dateFormatter.format(new Date()));
+
                     // Get the location manager
                     LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -495,12 +500,14 @@ public class AddReportActivity extends AppCompatActivity {
                         location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                         if( location != null ) {
                             System.out.println(location);
-                            addreport_params.put("latlng", "("+location.getLatitude()+", "+location.getLongitude()+")");
+                            addreport_params.put("latitude", String.valueOf(location.getLatitude()));
+                            addreport_params.put("longitude", String.valueOf(location.getLongitude()));
                         }
                     }
                     else {
                         System.out.println(location);
-                        addreport_params.put("latlng", "("+location.getLatitude()+", "+location.getLongitude()+")");
+                        addreport_params.put("latitude", String.valueOf(location.getLatitude()));
+                        addreport_params.put("longitude", String.valueOf(location.getLongitude()));
                     }
 
 /*                    Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);

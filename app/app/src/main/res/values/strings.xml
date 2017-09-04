@@ -5,10 +5,14 @@
     <string name="methodology">Methodology</string>
     <string name="action_filter">Filter</string>
     <string name="action_login">Login</string>
+    <string name="action_logout">Logout</string>
     <string name="action_success">Success Cases</string>
     <string name="action_add_report">Add report</string>
 
     <string name="action_add_comment">Add comment</string>
+
+    <string name="action_display_reports_all">Show all reports</string>
+    <string name="action_display_reports_nearby">Show nearby reports</string>
 
     <string name="map_show_reports">Show reports</string>
     <string name="reports_title">Odour Reports</string>
@@ -74,4 +78,6 @@
     <string name="menu_bar_type_dont_know">Do not know</string>
     <string name="menu_bar_type_other">Other</string>
     <string name="hint_type_other">Write which type it is</string>
+    <string name="view_details">View details</string>
+    <string name="title_activity_prueba">PruebaActivity</string>
 </resources>

@@ -1,0 +1,20 @@
+{
+  "name": "odourcollect",
+  "version": "0.0.1",
+  "description": "OdourCollect webapp",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt": "^1.0.1"
+  },
+  "devDependencies": {
+    "angular-gettext": "^2.3.8",
+    "grunt": "^1.0.1",
+    "grunt-angular-gettext": "^2.3.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ibercivis/OdourCollect"
+  }
+}

@@ -1,2 +1,275 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/7aec22c261688f1e00d2e4945bf84ef400e0d75b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_15ea372f710c551664b35358c62dec5d39ebc0c5.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/opt/android/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_93e77b6d67e1631d3da70eb9cd94bcc411c8c835/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/4931e81ca39060edfac6846c7cc3540ec3d0836b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_6a6b8385b40ec33ca4468cb06576f4284649d3e6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/9af6eb28a2d1f7a753846d4054fe197dcd4b4571/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c755536e5a100d9c76c8ea0b72f76c018f7a9de2">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_c777ab980dab69216bb2e402935aa049f4cb2548.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/ea3d1cbd4c711406a5745399114f623723b99483/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f9b41622897665678d31d78e57a361cb0cebcb0d">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_beb5ee902334d3eea2e0a5b23882ae1ae404d45a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/4ada9170a5bfe97103dca8337cf10181b43b9627/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6eb9107eb34d2fe2b020662b7fbbec991dcba846">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_1911a0990e05f172f883f2c482eced01f6854868.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/ea3d1cbd4c711406a5745399114f623723b99483/output/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="771b3cc0e597b54da25f8086ba73180c59c6bc71">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_60d208fb148613c722df115fa5193d1011e92ff0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/001456b6964310ab93a300e0de59d527c631fc4a/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="45f5eda279825ff470e3f51019d374d1ef61e000">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_e55973a857d0dc93423c65196e66941cf5072148.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.3.2/90a3822c38ec8c996e84c16a3477ef632cbc87a3/commons-lang3-3.3.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="90a3822c38ec8c996e84c16a3477ef632cbc87a3">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/commons-lang3-3.3.2_9df1828311988ef658c8487c64319467fee18f75.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.9.0/f824591a0016efbaeddb8300bee54832a1398cfa/okio-1.9.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/okio-1.9.0_b398dcadd063b1fdabb68c093e46da819fd4fa4f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/391923e8906cadd23568ef9941b8b1a590857ac4/output/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6e02e34594ebe9c0501ffda8dd48497f81b82977">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_1fc226b4ac04930ffec93af02619b8971179977a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/936ac3510527b9fd0bd13dbe5d8a9b3e1c3477f3/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="beac40bcc8a320a896dd15f5109cfcaea5e1e0e3">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_aebadff58c67de2341ab9f1a81aa4c909b6e3cfe.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/2daed4f454eade31562a762f42dfae48cb2f1b2f/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c14d049dc46260da1c76a9d18672d0636c5964a0">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_e81df394209a70d5fa7403e429db4f7eda9a28ae.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/391923e8906cadd23568ef9941b8b1a590857ac4/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c84e216d9bf618464d6b9564d71d9a656433e7c4">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_511f70654376f13ba2bdbe1d519aaf440c225b01.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/4ada9170a5bfe97103dca8337cf10181b43b9627/output/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="045be695d968dd707691cc55d23746dbf8cf569a">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_d63b6111e0af4fc307f84e7b99d850d4362f4a2b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/ab82821bfb59f20736e9a03edd17a2e34d6c72f4/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d8bd2268fdcbfd52c76ade65d9900cd8def93a44">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_76bf6eea55a08b131b9b715433c64fd692c41012.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alberto/projects/OdourCollect/app/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_65ad67637970790bf087d4b7b0f5dd3de8674c7e/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/0f5e16282f36cecfe9d91eb90f835487e0e25cc5/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fcc945a86ebcbf527429acb8216ec7dae2c06417">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_0a53fd10c6b6deae6d792cd27ffd665a03c888dd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/998ff94240cb07116b33a6120746fad8f32c4073/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c3c638be6e650b165ab9ae144857b64e82787fad">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_ec4e97dd4dbf8eeaf9f19f5eb96edd803572169d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/4676ef7ea1986975871bcb90c70a50439296c6d3/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f3ee23ef25c9a8fe3d40246d0b7097267963a612">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_b0e77566e335fd05c9903b8b11e1b330c47a7d5c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/edc2966dd9236779c45f0efb90ff5dd57b203861/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="897b8239af23c38e7a57596063f9df285b1e1c41">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_81d39fbb3e779df15a4ba04cbd3f527026b7bc04.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/31e94704f5e5ce8ceb7632737c83a0f037b5db3b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="23eb0d2998a782213b56168cbf23a0688b9111d9">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_046301993fd912def6cdf6f687ed671492ed9233.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alberto/projects/OdourCollect/app/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="141d828df0aca0b8eef7eb724be0c67aae85746f">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_dada87ec84e6db5c9a4a71e50d60d8d611eed1f6/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/751f548c85fa49f330cecbb1875893f971b33c4e/gson-2.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/gson-2.7_36e75b1e7f82a9c6cd68a91bb169f746f3b30f6d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/76d15dab62552c328aaf5b61a34ebcc79453b9f0/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/classes_e70340bba7130316325152aa8d9770916f313709.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/opt/android/extras/android/m2repository/com/android/support/support-annotations/24.2.0/support-annotations-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6be858a75633b1f0a2d24cad740db57775cb6871">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.0_f5344ef96b9285ce45062d5d4efb531e3cc5e854.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/alberto/.android/build-cache/2770c7ba45599d097bf4ac46a3e981ce7f830d52/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_bb7a45ffff1bcd3895cd20051c012d83a7425bae/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/0f5e16282f36cecfe9d91eb90f835487e0e25cc5/output/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="60d7b23621d31e6f42f4f76f16af467e57a20cda">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_58eb05bad59f76f87101304b96d35c752bfbd604.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.4.1/c7c4f9e35c2fd5900da24f9872e3971801f08ce0/okhttp-3.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/okhttp-3.4.1_4dd20524ce4b4cb32c62338c08f9c05e16b232cc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/alberto/.android/build-cache/ab82821bfb59f20736e9a03edd17a2e34d6c72f4/output/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="032a4b53def5e2ceedfc2e793b126c0163cfa1dd">
+        <dex dex="/home/alberto/projects/OdourCollect/app/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.0_3fa2243d78681e95f86b81640868cc7fb2583b21.jar" />
+    </item>
+
+</items>

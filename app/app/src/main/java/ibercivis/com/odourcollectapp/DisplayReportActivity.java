@@ -1,27 +1,20 @@
 package ibercivis.com.odourcollectapp;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -30,9 +23,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 // Populate dynamically the list of comments
@@ -42,28 +32,9 @@ import java.util.Map;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 public class DisplayReportActivity extends AppCompatActivity {
 
-    int report_id;
+    private int report_id;
 
     private ListView commentsListView;
 
@@ -88,19 +59,13 @@ public class DisplayReportActivity extends AppCompatActivity {
         populateReportActivity();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.action_bar_display_report_menu, menu);
-        return true;
-    }
-
     protected void populateReportActivity () {
 
         // Url for the webservice
-        String url = "http://modulos.ibercivis.es/webservice/getreport.php";
+        String url = getString(R.string.base_url) + "/getreport.php?report_id=" + report_id;
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest sr = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        StringRequest sr = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -198,28 +163,7 @@ public class DisplayReportActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                SessionManager session = new SessionManager(getApplicationContext());
-
-                Map<String, String> getreport_params = new HashMap<String, String>();
-
-                Intent myIntent = getIntent(); // gets the previously created intent
-                report_id = myIntent.getIntExtra("report_id", 0); // will return "report_id"
-
-                getreport_params.put("report_id", String.valueOf(report_id));
-
-                return getreport_params;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("Content-Type", "application/x-www-form-urlencoded");
-                return params;
-            }
-        };
+        });
         queue.add(sr);
     }
 

@@ -1,0 +1,33 @@
+<div id="modal-login">
+  <div class="modal-header">
+    <h4 class="modal-title" translate>Log in</h4>
+    <button type="button" class="modal-header-close" title="Close" ng-click="close()">&times;</button>
+  </div>
+  <div class="modal-body">
+  	<form class="form" name="loginForm" id="login_form" ng-submit="login()" novalidate>
+
+      <div class="form-group has-error" ng-show="errors">
+        <p ng-repeat="error in errors" class="help-block">{{ error }}</p>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error': loginForm.username.$invalid && !loginForm.username.$pristine}">
+        <label for="name_login" translate>Name</label>
+        <input class="form-control" type="text" name="username" id="name_login" ng-model="credentials.username" required="">
+        <p ng-show="loginForm.username.$invalid && !loginForm.username.$pristine" class="help-block" translate>You name is required.</p>
+      </div>
+
+      <div class="form-group" ng-class="{'has-error': loginForm.password.$invalid && !loginForm.password.$pristine}">
+        <label for="password_login" translate>Password</label><br>
+        <input type="password" name="password" id="password_login" value="" class="form-control" ng-model="credentials.password" required="">
+        <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block" translate>A password is required.</p>
+      </div>
+
+      <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/> <!-- Submit with enter key -->
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-default" ng-click="login()" translate>Login</button>
+    <button type="button" class="btn btn-sm btn-default" ng-click="signup()" translate>Sign Up</button>
+    <button type="button" class="btn btn-sm btn-default" ng-click="close()" translate>Cancel</button>
+  </div>
+</div>
